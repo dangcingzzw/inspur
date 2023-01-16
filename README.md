@@ -23,7 +23,7 @@
 
 ## 下载sdk
 
-* [sdk下载](https://github.com/dangcingzzw/inspur-php-sdk/archive/refs/heads/main.zip)
+* [sdk下载] composer require inspur/inspur-sdk-php
 
 ## 转码任务
 
