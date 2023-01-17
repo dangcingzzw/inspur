@@ -37,12 +37,10 @@ $client = MpsClient::newBuilder()
     ->withCredentials($credentials)
     ->build();
 
-/**
- * 创建转码模板
- */
+printf("---创建转码模板---");
 $request = new CreateTranscodeTemplateRequest();
 $body = new CreateTranscodeTemplateReq();
-$body->setName('HLS-H264-自定义分辨率-test');
+$body->setName('HLS-H264-自定义分辨率-test5');
 $body->setContainerType('HLS');
 $body->setVideo([
     'bitrateVideo' => '100',
@@ -65,21 +63,23 @@ $body->setAudio([
 $request->setBody($body);
 
 $response = $client->CreateTranscodeTemplate($request);
-var_dump($response->getBody());
 
-/**
- * 获取转码模板
- */
-$requestGet = new GetTranscodeTemplateRequest();
-$requestGet->setId($response->getId());
-$responseGet = $client->GetTranscodeTemplate($requestGet);
-var_dump($responseGet->getBody());
+if($response->getBody()){
+    var_dump($response->getBody());
+    $id=$response->getBody()['id'];
+    var_dump($id);
 
-/**
- * 删除转码模板
- */
-$requestDelete = new DeleteTranscodeTemplateRequest();
-$requestDelete->setId($response->getId());
-$responseDelete = $client->deleteTranscodeTemplate($requestDelete);
-var_dump($responseDelete->getBody());
-die;
+    printf("---获取转码模板---");
+    $requestGet = new GetTranscodeTemplateRequest();
+    $requestGet->setId($id);
+    $responseGet = $client->GetTranscodeTemplate($requestGet);
+    var_dump($responseGet->getBody());
+
+
+    printf("---删除转码模板---");
+    $requestDelete = new DeleteTranscodeTemplateRequest();
+    $requestDelete->setId($id);
+
+    $responseDelete = $client->deleteTranscodeTemplate($requestDelete);
+    var_dump($responseDelete->getBody());
+}

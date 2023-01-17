@@ -2,10 +2,9 @@
 
 namespace Inspur\SDK\Mps\V1\Model;
 
-use \ArrayAccess;
+
 use Inspur\SDK\Core\Utils\ObjectSerializer;
 use Inspur\SDK\Core\Utils\ModelInterface;
-use Inspur\SDK\Core\SdkResponse;
 use Inspur\SDK\Mps\V1\MpsClient;
 
 class CreateTranscodeTemplateReq implements ModelInterface
@@ -27,7 +26,9 @@ class CreateTranscodeTemplateReq implements ModelInterface
         'name' => 'string',
         'containerType' => 'string',
         'video' => 'array',
-        'audio' => 'array'
+        'audio' => 'array',
+        'timestamp' => 'string',
+        'nonce' => 'string'
     ];
 
     const DISCRIMINATOR = null;
@@ -43,7 +44,9 @@ class CreateTranscodeTemplateReq implements ModelInterface
         'name' => '',
         'containerType' => '',
         'video' => [],
-        'audio' => []
+        'audio' => [],
+        'timestamp' => '',
+        'nonce' => '',
     ];
 
     /**
@@ -71,21 +74,27 @@ class CreateTranscodeTemplateReq implements ModelInterface
         'name' => 'name',
         'containerType' => 'containerType',
         'video' => 'video',
-        'audio' => 'audio'
+        'audio' => 'audio',
+        'timestamp' => 'timestamp',
+        'nonce' => 'nonce',
     ];
 
     protected static $setters = [
         'name' => 'setName',
         'containerType' => 'setContainerType',
         'video' => 'setVideo',
-        'audio' => 'setAudio'
+        'audio' => 'setAudio',
+        'timestamp' => 'setTimestamp',
+        'nonce' => 'setNonce',
     ];
 
     protected static $getters = [
         'name' => 'getName',
         'containerType' => 'getContainerType',
         'video' => 'getVideo',
-        'audio' => 'getAudio'
+        'audio' => 'getAudio',
+        'timestamp' => 'getTimestamp',
+        'nonce' => 'getNonce',
     ];
 
     /**
@@ -163,10 +172,6 @@ class CreateTranscodeTemplateReq implements ModelInterface
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-
         return $invalidProperties;
     }
 

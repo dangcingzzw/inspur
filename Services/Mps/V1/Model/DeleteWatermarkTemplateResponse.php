@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspur\SDK\Vod\V1\Model;
+namespace Inspur\SDK\Mps\V1\Model;
 
 use \ArrayAccess;
 use Inspur\SDK\Core\Utils\ObjectSerializer;

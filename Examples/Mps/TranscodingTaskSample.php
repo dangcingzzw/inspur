@@ -7,7 +7,7 @@ use Inspur\SDK\Core\Http\HttpConfig;
 use Inspur\SDK\Mps\V1\Model\CreateTranscodingTaskReq;
 use Inspur\SDK\Mps\V1\Model\CreateTranscodingTaskRequest;
 use Inspur\SDK\Mps\V1\Model\GetTranscodingTaskRequest;
-use Inspur\SDK\Mps\V1\Model\DeleteTranscodingTaskRequest;
+use Inspur\SDK\Mps\V1\Model\ListTranscodingTaskRequest;
 use Inspur\SDK\Mps\V1\MpsClient;
 
 /**
@@ -39,48 +39,47 @@ $client = MpsClient::newBuilder()
     ->withEndpoint($endpoint)
     ->withCredentials($credentials)
     ->build();
-/**
- * 创建转码任务
- */
+
+
+printf("---创建转码任务---");
 $request = new CreateTranscodingTaskRequest();
 $body = new CreateTranscodingTaskReq();
 $body->setInput([
-    'bucket' => 'mps2',
+    'bucket' => 'mps-test12',
     'object' => 'input/SampleVideo_1280x720_1mb.mp4',
 ]);
 $body->setOutput([
-    'bucket' => 'mps3',
+    'bucket' => 'output/  ',
     'object' => '电视剧/2022/',
 ]);
 $body->setMediaProcessTaskInput([
     'transcodeTaskInput' => [
         'transcodeTemplateId' => '200928478868574208',
-        'watermarkTemplateId' => '512993768854454272',
+        'watermarkTemplateId' => '667408536209129472',
     ],
     'snapshotTaskInput' => [
-        'snapshotTemplateId' => '511552299258019840',
+        'snapshotTemplateId' => '667413904104554496',
         'snapshotConfig' => null,
         'snapshotMode' => 'afterTranscoding',
     ]
 ]);
 
 $request->setBody($body);
-
 $response = $client->CreateTransCodingTask($request);
-var_dump($response->getBody());
+$id=$response->getBody()['taskId'];
 
-/**
- * 获取转码任务
- */
-$requestGet = new GetTranscodingTaskRequest();
-$requestGet->setId($response->getId());
-$responseGet = $client->GetTranscodingTask($requestGet);
+printf("---获取转码任务---");
+$requestGet = new GetTransCodingTaskRequest();
+$requestGet->setId($id);
+$responseGet = $client->GetTransCodingTask($requestGet);
 var_dump($responseGet->getBody());
 
-/**
- * 删除转码任务
- */
-$requestDelete = new DeleteTranscodingTaskRequest();
-$requestDelete->setId($response->getId());
-$responseDelete = $client->deleteTranscodingTask($requestDelete);
+
+printf("---转码任务列表---");
+$requestList = new ListTranscodingTaskRequest();
+$requestList->setPageNo(1);
+$requestList->setPageSize(2);
+
+$responseDelete = $client->listTransCodingTask($requestList);
 var_dump($responseDelete->getBody());
+

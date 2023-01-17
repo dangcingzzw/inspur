@@ -392,8 +392,10 @@ class Client
 
     public function SyncResponseHandler($response, $responseType)
     {
+
         $statusCode = $response->getStatusCode();
         $responseBody = $response->getBody();
+
         $responseHeader = $response->getHeaders();
         $returnData = ObjectSerializer::deserialize((string) $responseBody, $responseType);
 
@@ -401,6 +403,9 @@ class Client
         $returnData->setHeaderParams($responseHeader);
 
         $returnDataArr=json_decode((string) $responseBody,true);
+
+        var_dump($returnDataArr);
+
         if($returnDataArr){
             $returnData->setBody($returnDataArr['result']);
         }else{

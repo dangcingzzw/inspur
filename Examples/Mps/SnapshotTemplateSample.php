@@ -33,14 +33,12 @@ $client = MpsClient::newBuilder()
     ->withCredentials($credentials)
     ->build();
 
-/**
- * 创建截图模板
- */
+printf("---创建截图模板---");
 $request = new CreateSnapshotTemplateRequest();
 $body = new CreateSnapshotTemplateReq();
-$body->setName("采样截图-百分比--标清-test");
+$body->setName("采样截图-百分比--标清-test10");
 $body->setType("sampling");
-$body->setImageFormat("jpg");
+$body->setImageFormat("JPG");
 $body->setResolution("SD");
 $body->setCustomerResolution(null);
 $body->setSamplingType("百分比");
@@ -48,21 +46,24 @@ $body->setSamplingInterval("22");
 
 $request->setBody($body);
 $response = $client->CreateSnapshotTemplate($request);
-var_dump($response->getBody());
+if($response->getBody()){
+    var_dump($response->getBody());
+    $id=$response->getBody()['id'];
+    var_dump($id);
 
-/**
- * 获取截图模板
- */
-$requestGet = new GetSnapshotTemplateRequest();
-$requestGet->setId($response->getId());
-$responseGet = $client->GetSnapshotTemplate($requestGet);
-var_dump($responseGet->getBody());
+    printf("---获取截图模板---");
+    $requestGet = new GetSnapshotTemplateRequest();
+    $requestGet->setId($id);
+    $responseGet = $client->GetSnapshotTemplate($requestGet);
+    var_dump($responseGet->getBody());
 
-/**
- * 删除截图模板
- */
-$requestDelete = new DeleteSnapshotTemplateRequest();
-$requestDelete->setId($response->getId());
-$responseDelete = $client->deleteSnapshotTemplate($requestDelete);
-var_dump($responseDelete->getBody());
+
+    printf("---删除截图模板---");
+    $requestDelete = new DeleteSnapshotTemplateRequest();
+    $requestDelete->setId($id);
+
+    $responseDelete = $client->deleteSnapshotTemplate($requestDelete);
+    var_dump($responseDelete->getBody());
+}
+
 die;

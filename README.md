@@ -54,7 +54,7 @@ use Inspur\SDK\Core\Http\HttpConfig;
 use Inspur\SDK\Mps\V1\Model\CreateTranscodingTaskReq;
 use Inspur\SDK\Mps\V1\Model\CreateTranscodingTaskRequest;
 use Inspur\SDK\Mps\V1\Model\GetTranscodingTaskRequest;
-use Inspur\SDK\Mps\V1\Model\DeleteTranscodingTaskRequest;
+use Inspur\SDK\Mps\V1\Model\ListTranscodingTaskRequest;
 use Inspur\SDK\Mps\V1\MpsClient;
 
 // 创建MpsClient实例
@@ -104,7 +104,7 @@ $responseGet = $client->GetTranscodingTask($requestGet);
 var_dump($responseGet->getBody());
 
 //删除转码任务
-$requestDelete = new DeleteTranscodingTaskRequest();
+$requestDelete = new ListTranscodingTaskRequest();
 $requestDelete->setId($response->getId());
 $responseDelete = $client->deleteTranscodingTask($requestDelete);
 var_dump($responseDelete->getBody());

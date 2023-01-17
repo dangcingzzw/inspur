@@ -36,37 +36,39 @@ $client = MpsClient::newBuilder()
 /**
  * 创建水印模板
  */
-//$request = new CreateWatermarkTemplateRequest();
-//$body = new CreateWatermarkTemplateReq();
-//$body->setName("resttt02");
-//$body->setPicUrl("http://10.110.29.239:9100/mps/20220704/4516effb-e404-4f79-a50a-3172634e9ee8.png");
-//$body->setWatermarkPosition([
-//    'width' => "100",
-//    'height' => "100",
-//    'top' => "80",
-//    'left' => "80"
-//]);
-//$request->setBody($body);
-//
-//$response = $client->CreateWatermarkTemplate($request);
-//var_dump($response->getBody());
+printf("---创建水印模板---");
+$request = new CreateWatermarkTemplateRequest();
+$body = new CreateWatermarkTemplateReq();
+$body->setName("resttt12");
+$body->setPicUrl("http://10.110.29.239:9100/mps/20220704/4516effb-e404-4f79-a50a-3172634e9ee8.png");
+$body->setWatermarkPosition([
+    'width' => "100",
+    'height' => "100",
+    'top' => "80",
+    'left' => "80"
+]);
+$request->setBody($body);
+
+$response = $client->CreateWatermarkTemplate($request);
+
+if($response->getBody()){
+    var_dump($response->getBody());
+    $id=$response->getBody()['id'];
+    var_dump($id);
+
+    printf("---获取水印模板---");
+    $requestGet = new GetWatermarkTemplateRequest();
+    $requestGet->setId($id);
+    $responseGet = $client->GetWatermarkTemplate($requestGet);
+    var_dump($responseGet->getBody());
 
 
-/**
- * 获取水印模板
- */
-//$requestGet = new GetWatermarkTemplateRequest();
-////$requestGet->setId($response->getBody()['id']);
-//$requestGet->setId('667309987169501184');
-//$responseGet = $client->GetWatermarkTemplate($requestGet);
-//var_dump($responseGet->getBody());die;
+    printf("---删除水印模板---");
+    $requestDelete = new DeleteWatermarkTemplateRequest();
+    $requestDelete->setId($id);
 
-/**
- * 删除水印模板
- */
-$requestDelete = new DeleteWatermarkTemplateRequest();
-//$requestGet->setId($response->getBody()['id']);
-$requestDelete->setId('667309987169501184');
-$responseDelete = $client->deleteWatermarkTemplate($requestDelete);
-var_dump($responseDelete->getBody());
+    $responseDelete = $client->deleteWatermarkTemplate($requestDelete);
+    var_dump($responseDelete->getBody());
+}
+
 die;

@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspur\SDK\Vod\V1\Model;
+namespace Inspur\SDK\Mps\V1\Model;
 
 use \ArrayAccess;
 use Inspur\SDK\Core\Utils\ObjectSerializer;
 use Inspur\SDK\Core\Utils\ModelInterface;
 use Inspur\SDK\Core\SdkResponse;
 
-class DeleteTranscodingTaskResponse implements ModelInterface, ArrayAccess
+class ListTranscodingTaskResponse implements ModelInterface, ArrayAccess
 {
     use SdkResponse;
     const DISCRIMINATOR = null;
@@ -17,7 +17,7 @@ class DeleteTranscodingTaskResponse implements ModelInterface, ArrayAccess
     *
     * @var string
     */
-    protected static $openAPIModelName = 'DeleteTranscodingTaskResponse';
+    protected static $openAPIModelName = 'ListTranscodingTaskResponse';
 
     /**
     * Array of property to type mappings. Used for (de)serialization

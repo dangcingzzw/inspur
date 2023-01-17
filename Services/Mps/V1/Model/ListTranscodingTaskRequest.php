@@ -8,7 +8,7 @@ use Inspur\SDK\Core\Utils\ModelInterface;
 use Inspur\SDK\Core\SdkResponse;
 use Inspur\SDK\Mps\V1\MpsClient;
 
-class DeleteTranscodingTaskRequest implements ModelInterface, ArrayAccess
+class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -26,7 +26,8 @@ class DeleteTranscodingTaskRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'pageNo' => 'int',
+        'pageSize' => 'int',
         'timestamp' => 'string',
         'nonce' => 'string',
 
@@ -39,7 +40,8 @@ class DeleteTranscodingTaskRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $openAPIFormats = [
-        'id' => null,
+        'pageNo' => 1,
+        'pageSize' => 10,
         'timestamp' => '',
         'nonce' => '',
     ];
@@ -64,35 +66,25 @@ class DeleteTranscodingTaskRequest implements ModelInterface, ArrayAccess
         return self::$openAPIFormats;
     }
 
-    /**
-     * id  转码任务配置id
-     *
-     * @var string[]
-     */
+
     protected static $attributeMap = [
-        'id' => 'id',
+        'pageNo' => 'pageNo',
+        'pageSize' => 'pageSize',
         'timestamp' => 'timestamp',
         'nonce' => 'nonce'
     ];
 
-    /**
-     * id  转码任务配置id
-     *
-     * @var string[]
-     */
+
     protected static $setters = [
-        'id' => 'setId',
+        'pageNo' => 'setPageNo',
+        'pageSize' => 'setPageSize',
         'timestamp' => 'setTimestamp',
         'nonce' => 'setNonce'
     ];
 
-    /**
-     * id  转码任务配置id
-     *
-     * @var string[]
-     */
     protected static $getters = [
-        'id' => 'getId',
+        'pageNo' => 'getPageNo',
+        'pageSize' => 'getPageSize',
         'timestamp' => 'getTimestamp',
         'nonce' => 'getNonce'
     ];
@@ -154,10 +146,10 @@ class DeleteTranscodingTaskRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['pageNo'] = isset($data['pageNo']) ? $data['pageNo'] : 1;
+        $this->container['pageSize'] = isset($data['pageSize']) ? $data['pageSize'] : 10;
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : time().rand(100,999);;
         $this->container['nonce'] = isset($data['nonce']) ? $data['nonce'] : (new MpsClient())->uuid();
-
     }
 
     /**
@@ -183,27 +175,24 @@ class DeleteTranscodingTaskRequest implements ModelInterface, ArrayAccess
     }
 
 
-    /**
-     * Gets id
-     *  转码任务配置id
-     *
-     * @return string
-     */
-    public function getId()
+    public function getPageNo()
     {
-        return $this->container['id'];
+        return $this->container['pageNo'];
     }
 
-    /**
-     * Sets id
-     *
-     * @param string $id 转码任务配置id
-     *
-     * @return $this
-     */
-    public function setId($id)
+    public function setPageNo($pageNo)
     {
-        $this->container['id'] = $id;
+        $this->container['pageNo'] = $pageNo;
+        return $this;
+    }
+    public function getPageSize()
+    {
+        return $this->container['pageSize'];
+    }
+
+    public function setPageSize($pageSize)
+    {
+        $this->container['pageSize'] = $pageSize;
         return $this;
     }
     public function getTimestamp()

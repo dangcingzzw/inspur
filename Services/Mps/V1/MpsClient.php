@@ -59,7 +59,6 @@ class MpsClient extends Client
         if ($localVarParams['body'] !== null) {
             $httpBody = $localVarParams['body'];
         }
-
         return $this->callApi(
             $method = 'POST',
             $resourcePath,
@@ -89,7 +88,7 @@ class MpsClient extends Client
 
     public function getTranscodingTaskWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/template/transcoding-tasks';
+        $resourcePath = '/mps/openapi/v1/transcoding-task-info';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -122,15 +121,16 @@ class MpsClient extends Client
             $headers
         );
 
-        $id = $queryParams['id'];
+        $id = $request['id'];
         $queryParams = [
+            'taskId'=>$id,
             'timestamp' => $request->getTimestamp(),
             'nonce' => $request->getNonce(),
         ];
 
         return $this->callApi(
             $method = 'GET',
-            $resourcePath . '/' . $id,
+            $resourcePath,
             $pathParams,
             $queryParams,
             $headerParams = $headers,
@@ -150,14 +150,14 @@ class MpsClient extends Client
      * @param $request 请求对象
      * @return response
      */
-    public function deleteTranscodingTask($request)
+    public function listTranscodingTask($request)
     {
-        return $this->deleteTranscodingTaskWithHttpInfo($request);
+        return $this->listTranscodingTaskWithHttpInfo($request);
     }
 
-    public function deleteTranscodingTaskWithHttpInfo($request)
+    public function listTranscodingTaskWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/template/transcoding-tasks';
+        $resourcePath = '/mps/openapi/v1/transcoding-task-list';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -190,23 +190,26 @@ class MpsClient extends Client
             $headers
         );
 
-        $id = $queryParams['id'];
+        $pageNo = $request['pageNo'];
+        $pageSize = $request['pageSize'];
         $queryParams = [
             'timestamp' => $request->getTimestamp(),
+            'pageNo'=>$pageNo,
+            'pageSize'=>$pageSize,
             'nonce' => $request->getNonce(),
         ];
 
         return $this->callApi(
-            $method = 'DELETE',
-            $resourcePath . '/' . $id,
+            $method = 'GET',
+            $resourcePath,
             $pathParams,
             $queryParams,
             $headerParams = $headers,
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\deleteTranscodingTaskResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\deleteTranscodingTaskRequest'
+            $responseType = '\Inspur\SDK\Mps\V1\Model\ListTranscodingTaskResponse',
+            $requestType = '\Inspur\SDK\Mps\V1\Model\ListTranscodingTaskRequest'
         );
     }
 
@@ -275,7 +278,7 @@ class MpsClient extends Client
 
     public function getTranscodeTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/template/transcode-templates';
+        $resourcePath = '/mps/openapi/v1/transcode-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -338,12 +341,12 @@ class MpsClient extends Client
      */
     public function deleteTranscodeTemplate($request)
     {
-        return $this->getTranscodeTemplateWithHttpInfo($request);
+        return $this->deleteTranscodeTemplateWithHttpInfo($request);
     }
 
     public function deleteTranscodeTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/template/transcode-templates';
+        $resourcePath = '/mps/openapi/v1/transcode-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -510,8 +513,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\getWatermarkTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\getWatermarkTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\V1\Model\GetWatermarkTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\V1\Model\GetWatermarkTemplateRequest'
         );
     }
 
@@ -525,7 +528,7 @@ class MpsClient extends Client
      */
     public function deleteWatermarkTemplate($request)
     {
-        return $this->getWatermarkTemplateWithHttpInfo($request);
+        return $this->deleteWatermarkTemplateWithHttpInfo($request);
     }
 
     public function deleteWatermarkTemplateWithHttpInfo($request)
@@ -648,7 +651,7 @@ class MpsClient extends Client
 
     public function getSnapshotTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/template/snapshot-templates';
+        $resourcePath = '/mps/openapi/v1/snapshot-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -711,12 +714,12 @@ class MpsClient extends Client
      */
     public function deleteSnapshotTemplate($request)
     {
-        return $this->getWatermarkTemplateWithHttpInfo($request);
+        return $this->deleteSnapshotTemplateWithHttpInfo($request);
     }
 
     public function deleteSnapshotTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/template/snapshot-templates';
+        $resourcePath = '/mps/openapi/v1/snapshot-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -751,8 +754,8 @@ class MpsClient extends Client
 
         $id = $queryParams['id'];
         $queryParams = [
-            'nonce' => $request->getNonce(),
             'timestamp' => $request->getTimestamp(),
+            'nonce' => $request->getNonce(),
         ];
 
         return $this->callApi(
@@ -789,6 +792,7 @@ class MpsClient extends Client
             $x_time = $queryParams['timestamp'] ?? time() . rand(100, 999);
             $x_nonce = $queryParams['nonce'] ?? $this->uuid();
         }
+
         $headerParams = [
             'x-sign-algorithm' => 'md5',
             'Content-Type' => 'application/json;charset=UTF-8',

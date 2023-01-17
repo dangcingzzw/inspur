@@ -5,13 +5,13 @@ require '../../vendor/autoload.php';
 use OSS\OSSClient;
 use OSS\OSSException;
 
-$ak = 'ZjQxNjgzMDQtYmY0ZC00MjdlLTg0MTctNThlZGE2OGYxNjU3';
+$ak = 'inspur-ffe16c48-3672-4294-ad98-2be217c4b111-oss';
 
-$sk = 'NzAyMWM1ZDAtYTZjNC00ZmNhLTlhYTAtMmNjMDNhMmNmNTFl';
+$sk = 'WinZZW1qqIkw72IDQYSLlxzROwL4SDlgGjTdF9Wz';
 
-$endpoint = 'http://oss.cn-north-3.inspurcloudoss.com';
+$endpoint = 'http://10.110.29.24/';
 
-$bucketName = 'chenli';
+$bucketName = 'mps-test10';
 
 
 $OSSClient = OSSClient::factory([
@@ -26,10 +26,10 @@ try {
     /**
      * value:百分比
      */
-    printf("图片处理-旋转-测试用例");
+    printf("测试用例");
     $res=$OSSClient->GetAvInfoOperation([
         'body' => [
-            'file' => 'https://sfff.oss.cn-north-3.inspurcloudoss.com/012.jpg',
+            'file' => 'https://mps-test10.oss.dev.inspurcloudoss.com/testavi.avi',
         ]
     ]);
     var_dump($res);die;

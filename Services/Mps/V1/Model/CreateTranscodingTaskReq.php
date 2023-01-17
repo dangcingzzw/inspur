@@ -29,7 +29,9 @@ class CreateTranscodingTaskReq implements ModelInterface
     protected static $openAPITypes = [
         'input' => 'string',
         'output' => 'string',
-        'mediaProcessTaskInput' => 'array'
+        'mediaProcessTaskInput' => 'array',
+        'timestamp' => 'string',
+        'nonce' => 'string',
     ];
 
     const DISCRIMINATOR = null;
@@ -44,7 +46,9 @@ class CreateTranscodingTaskReq implements ModelInterface
     protected static $openAPIFormats = [
         'input' => '',
         'output' => '',
-        'mediaProcessTaskInput' => []
+        'mediaProcessTaskInput' => [],
+        'timestamp' => '',
+        'nonce' => ''
     ];
 
     /**
@@ -71,19 +75,25 @@ class CreateTranscodingTaskReq implements ModelInterface
     protected static $attributeMap = [
         'input' => 'input',
         'output' => 'output',
-        'mediaProcessTaskInput' => 'mediaProcessTaskInput'
+        'mediaProcessTaskInput' => 'mediaProcessTaskInput',
+        'timestamp' => 'timestamp',
+        'nonce' => 'nonce'
     ];
 
     protected static $setters = [
         'input' => 'setInput',
         'output' => 'setOutput',
-        'mediaProcessTaskInput' => 'setMediaProcessTaskInput'
+        'mediaProcessTaskInput' => 'setMediaProcessTaskInput',
+        'timestamp' => 'setTimestamp',
+        'nonce' => 'setNonce'
     ];
 
     protected static $getters = [
         'input' => 'getInput',
         'output' => 'getOutput',
-        'mediaProcessTaskInput' => 'getMediaProcessTaskInput'
+        'mediaProcessTaskInput' => 'getMediaProcessTaskInput',
+        'timestamp' => 'getTimestamp',
+        'nonce' => 'getNonce'
     ];
 
     /**
