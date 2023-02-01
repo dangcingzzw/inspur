@@ -23,6 +23,8 @@ namespace Inspur\SDK\Core;
 trait SdkResponse
 {
     private $statusCode;
+    private $code;
+    private $message;
     private $headerParams;
     private $body;
 
@@ -73,4 +75,36 @@ trait SdkResponse
     {
         $this->body = $body;
     }
+    /**
+     * @return mixed
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param mixed $code
+     */
+    public function setCode($code)
+    {
+        $this->body = $code;
+    }
+    /**
+     * @return mixed
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * @param mixed $code
+     */
+    public function setMessage($message)
+    {
+        $this->body = $message;
+    }
+
+
 }

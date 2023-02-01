@@ -101,8 +101,7 @@ class HttpClient
         }
 
         $httpOption = $this->createHttpClientOption($this->httpConfig);
-//        $response = $this->client->send($request, $httpOption);
-//        var_dump($response);die;
+
 
         try {
 

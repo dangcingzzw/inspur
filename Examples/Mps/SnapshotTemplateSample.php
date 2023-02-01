@@ -9,6 +9,10 @@ use Inspur\SDK\Mps\V1\Model\CreateSnapshotTemplateRequest;
 use Inspur\SDK\Mps\V1\Model\GetSnapshotTemplateRequest;
 use Inspur\SDK\Mps\V1\Model\DeleteSnapshotTemplateRequest;
 use Inspur\SDK\Mps\V1\MpsClient;
+use Inspur\SDK\Mps\V1\Enum\SnapshotTypeEnum;
+use Inspur\SDK\Mps\V1\Enum\SnapshotFormatEnum;
+use Inspur\SDK\Mps\V1\Enum\ResolutionEnum;
+use Inspur\SDK\Mps\V1\Enum\SamplingTypeEnum;
 
 /**
  * name  截图模板名称。
@@ -33,24 +37,25 @@ $client = MpsClient::newBuilder()
     ->withCredentials($credentials)
     ->build();
 
+
 printf("---创建截图模板---");
 $request = new CreateSnapshotTemplateRequest();
 $body = new CreateSnapshotTemplateReq();
-$body->setName("采样截图-百分比--标清-test10");
-$body->setType("sampling");
-$body->setImageFormat("JPG");
-$body->setResolution("SD");
+$body->setName("采样截图-百分比666--标清-test10");
+$body->setType(SnapshotTypeEnum::SAMPLING);
+$body->setImageFormat(SnapshotFormatEnum::JPG);
+$body->setResolution(ResolutionEnum::SD);
 $body->setCustomerResolution(null);
-$body->setSamplingType("百分比");
+$body->setSamplingType(SamplingTypeEnum::PERCENT);
 $body->setSamplingInterval("22");
 
 $request->setBody($body);
 $response = $client->CreateSnapshotTemplate($request);
 if($response->getBody()){
+
     var_dump($response->getBody());
     $id=$response->getBody()['id'];
     var_dump($id);
-
     printf("---获取截图模板---");
     $requestGet = new GetSnapshotTemplateRequest();
     $requestGet->setId($id);

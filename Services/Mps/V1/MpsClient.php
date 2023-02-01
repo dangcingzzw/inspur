@@ -885,7 +885,6 @@ class MpsClient extends Client
             . "(e.g. \$model->get(\$key)) or accessing the model like an associative array (e.g. \$model['key']).\n\n";
         $lines = array_slice(explode("\n", trim(print_r($this->toArray(), true))), 2, -1);
         $output .= implode("\n", $lines);
-
         return $output . "\n";
     }
 }

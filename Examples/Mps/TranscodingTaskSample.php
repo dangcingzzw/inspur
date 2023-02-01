@@ -78,7 +78,9 @@ var_dump($responseGet->getBody());
 printf("---转码任务列表---");
 $requestList = new ListTranscodingTaskRequest();
 $requestList->setPageNo(1);
-$requestList->setPageSize(2);
+$requestList->setPageSize(5);
+$requestList->setStartDate('"2021-11-15T06:13:52Z');
+$requestList->setEndDate('"2022-07-15T06:17:12Z');
 
 $responseDelete = $client->listTransCodingTask($requestList);
 var_dump($responseDelete->getBody());

@@ -28,6 +28,8 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'pageNo' => 'int',
         'pageSize' => 'int',
+        'startDate' => 'string',
+        'endDate' => 'string',
         'timestamp' => 'string',
         'nonce' => 'string',
 
@@ -42,6 +44,8 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'pageNo' => 1,
         'pageSize' => 10,
+        'startDate' => '',
+        'endDate' => '',
         'timestamp' => '',
         'nonce' => '',
     ];
@@ -70,6 +74,8 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'pageNo' => 'pageNo',
         'pageSize' => 'pageSize',
+        'startDate' => 'startDate',
+        'endDate' => 'endDate',
         'timestamp' => 'timestamp',
         'nonce' => 'nonce'
     ];
@@ -78,6 +84,8 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     protected static $setters = [
         'pageNo' => 'setPageNo',
         'pageSize' => 'setPageSize',
+        'startDate' => 'setStartDate',
+        'endDate' => 'setEndDate',
         'timestamp' => 'setTimestamp',
         'nonce' => 'setNonce'
     ];
@@ -85,6 +93,8 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     protected static $getters = [
         'pageNo' => 'getPageNo',
         'pageSize' => 'getPageSize',
+        'startDate' => 'getStartDate',
+        'endDate' => 'getEndDate',
         'timestamp' => 'getTimestamp',
         'nonce' => 'getNonce'
     ];
@@ -148,6 +158,8 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     {
         $this->container['pageNo'] = isset($data['pageNo']) ? $data['pageNo'] : 1;
         $this->container['pageSize'] = isset($data['pageSize']) ? $data['pageSize'] : 10;
+        $this->container['startDate'] = isset($data['startDate']) ? $data['startDate'] : null;
+        $this->container['endDate'] = isset($data['endDate']) ? $data['endDate'] : null;
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : time().rand(100,999);;
         $this->container['nonce'] = isset($data['nonce']) ? $data['nonce'] : (new MpsClient())->uuid();
     }
@@ -193,6 +205,26 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     public function setPageSize($pageSize)
     {
         $this->container['pageSize'] = $pageSize;
+        return $this;
+    }
+    public function getStartDate()
+    {
+        return $this->container['startDate'];
+    }
+
+    public function setStartDate($startDate)
+    {
+        $this->container['startDate'] = $startDate;
+        return $this;
+    }
+    public function getEndDate()
+    {
+        return $this->container['endDate'];
+    }
+
+    public function setEndDate($endDate)
+    {
+        $this->container['endDate'] = $endDate;
         return $this;
     }
     public function getTimestamp()

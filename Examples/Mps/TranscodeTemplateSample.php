@@ -9,6 +9,11 @@ use Inspur\SDK\Mps\V1\Model\CreateTranscodeTemplateRequest;
 use Inspur\SDK\Mps\V1\Model\GetTranscodeTemplateRequest;
 use Inspur\SDK\Mps\V1\Model\DeleteTranscodeTemplateRequest;
 use Inspur\SDK\Mps\V1\MpsClient;
+use Inspur\SDK\Mps\V1\Enum\ContainerTypeEnum;
+use Inspur\SDK\Mps\V1\Enum\VcodecEnum;
+use Inspur\SDK\Mps\V1\Enum\FreqAudioEnum;
+use Inspur\SDK\Mps\V1\Enum\AcodecEnum;
+use Inspur\SDK\Mps\V1\Enum\ChannelsAudioEnum;
 
 /**
  * name  转码模板名称。
@@ -41,11 +46,11 @@ printf("---创建转码模板---");
 $request = new CreateTranscodeTemplateRequest();
 $body = new CreateTranscodeTemplateReq();
 $body->setName('HLS-H264-自定义分辨率-test5');
-$body->setContainerType('HLS');
+$body->setContainerType(ContainerTypeEnum::HLS);
 $body->setVideo([
     'bitrateVideo' => '100',
     'freqVideo' => '15',
-    'vcodec' => 'H.264 Main',
+    'vcodec' => VcodecEnum::H264_MAIN,
     'resolution' => 'customer',
     'customerResolution' => [
         'shortSide' => '400',
@@ -54,9 +59,9 @@ $body->setVideo([
 ]);
 $body->setAudio([
     'bitrateAudio' => '128',
-    'freqAudio' => '44100',
-    'acodec' => 'MP3',
-    'channelsAudio' => '2',
+    'freqAudio' => FreqAudioEnum::FOUR_FOUR,
+    'acodec' => AcodecEnum::MP3,
+    'channelsAudio' => ChannelsAudioEnum::TWO,
 ]);
 
 

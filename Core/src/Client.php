@@ -403,15 +403,15 @@ class Client
         $returnData->setHeaderParams($responseHeader);
 
         $returnDataArr=json_decode((string) $responseBody,true);
+        $returnData->setBody((string) $responseBody);
 
-        var_dump($returnDataArr);
 
-        if($returnDataArr){
+        if(isset($returnDataArr['code'])){
+            var_dump($returnDataArr['message']);
             $returnData->setBody($returnDataArr['result']);
         }else{
             $returnData->setBody((string) $responseBody);
         }
-
         return $returnData;
     }
 }

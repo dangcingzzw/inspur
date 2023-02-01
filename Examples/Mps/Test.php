@@ -5,13 +5,17 @@ require '../../vendor/autoload.php';
 use OSS\OSSClient;
 use OSS\OSSException;
 
-$ak = 'inspur-ffe16c48-3672-4294-ad98-2be217c4b111-oss';
+//$ak = 'inspur-ffe16c48-3672-4294-ad98-2be217c4b111-oss';
+$ak = 'NDdhOTY2YWMtYjA4NS00MWRlLWI3NDAtMjQwYTIzYWJmYmVm';
 
-$sk = 'WinZZW1qqIkw72IDQYSLlxzROwL4SDlgGjTdF9Wz';
+//NDdhOTY2YWMtYjA4NS00MWRlLWI3NDAtMjQwYTIzYWJmYmVm
+//MWY4OWY3ZTctNzZmMS00MmRjLWE5ZTUtMTllNzQ3MjIxZWZj
+//$sk = 'WinZZW1qqIkw72IDQYSLlxzROwL4SDlgGjTdF9Wz';
+$sk = 'MWY4OWY3ZTctNzZmMS00MmRjLWE5ZTUtMTllNzQ3MjIxZWZj';
 
-$endpoint = 'http://10.110.29.24/';
-
-$bucketName = 'mps-test10';
+$endpoint = 'http://oss.dev.inspurcloudoss.com';
+//$endpoint = 'http://10.110.29.24';
+$bucketName = 'mps-test';
 
 
 $OSSClient = OSSClient::factory([
@@ -21,25 +25,24 @@ $OSSClient = OSSClient::factory([
     'socket_timeout' => 30,
     'connect_timeout' => 10
 ]);
-
 try {
     /**
-     * value:百分比
+     * file:文件路径
      */
-    printf("测试用例");
-    $res=$OSSClient->GetAvInfoOperation([
+    printf("获取元数据示例");
+    $res = $OSSClient->getAvInfoOperation([
         'body' => [
-            'file' => 'https://mps-test10.oss.dev.inspurcloudoss.com/testavi.avi',
+            'file' => 'https://mps-test.oss.dev.inspurcloudoss.com/input/2001-04-11.asf',
         ]
     ]);
-    var_dump($res);die;
+    var_dump($res);
+    die;
+} catch (OSSException $e) {
+    echo 'Response Code:' . $e->getStatusCode() . PHP_EOL;
+    echo 'Error Message:' . $e->getExceptionMessage() . PHP_EOL;
+    echo 'Error Code:' . $e->getExceptionCode() . PHP_EOL;
+    echo 'Request ID:' . $e->getRequestId() . PHP_EOL;
+    echo 'Exception Type:' . $e->getExceptionType() . PHP_EOL;
+} finally {
+    $OSSClient->close();
 }
-catch ( OSSException $e ) {
-        echo 'Response Code:' . $e->getStatusCode () . PHP_EOL;
-        echo 'Error Message:' . $e->getExceptionMessage () . PHP_EOL;
-        echo 'Error Code:' . $e->getExceptionCode () . PHP_EOL;
-        echo 'Request ID:' . $e->getRequestId () . PHP_EOL;
-        echo 'Exception Type:' . $e->getExceptionType () . PHP_EOL;
-    } finally{
-        $OSSClient->close ();
-    }
