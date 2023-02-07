@@ -407,6 +407,7 @@ class Client
 
 
         if(isset($returnDataArr['code'])){
+
             var_dump($returnDataArr['message']);
             $returnData->setBody($returnDataArr['result']);
         }else{

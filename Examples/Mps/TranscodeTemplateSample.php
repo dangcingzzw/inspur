@@ -69,10 +69,11 @@ $request->setBody($body);
 
 $response = $client->CreateTranscodeTemplate($request);
 
-if($response->getBody()){
+if ($response->getBody()) {
     var_dump($response->getBody());
-    $id=$response->getBody()['id'];
+    $id = $response->getBody()['id'];
     var_dump($id);
+    die;
 
     printf("---获取转码模板---");
     $requestGet = new GetTranscodeTemplateRequest();

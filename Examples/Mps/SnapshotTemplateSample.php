@@ -27,6 +27,11 @@ use Inspur\SDK\Mps\V1\Enum\SamplingTypeEnum;
 $ak = "ZGM2MjNiMzAtYzkxOC00NTgwLWE1YTQtZGQ1ZjU4MTczNWU3";
 $sk = "NDEzMDRiNTctNjIxNS00YTAwLWFlN2QtZTc4MTNkZThiYjFm";
 $endpoint = "https://service-dev.inspurcloud.cn";
+
+//$ak = "NzFkZTcyZWEtNjI4Yy00MWVkLTk2ODYtMzM5NzY3YjI3MTE4";
+//$sk = "MDY4YjNmOTAtNDI4YS00ZmU0LWJlZWEtM2RkN2VlNmE4NDFj";
+//$endpoint = "https://horizon.openstack.svc.cn-north-3.myinspurcloud.com";
+
 $projectId = "/mps/openapi";
 $credentials = new BasicCredentials($ak, $sk, $projectId);
 $config = HttpConfig::getDefaultConfig();
@@ -38,16 +43,20 @@ $client = MpsClient::newBuilder()
     ->build();
 
 
+
 printf("---创建截图模板---");
 $request = new CreateSnapshotTemplateRequest();
 $body = new CreateSnapshotTemplateReq();
-$body->setName("采样截图-百分比666--标清-test10");
-$body->setType(SnapshotTypeEnum::SAMPLING);
+$body->setName("采样截图-百分比666--标清-test129");
+$body->setType(SnapshotTypeEnum::TIMING);
 $body->setImageFormat(SnapshotFormatEnum::JPG);
-$body->setResolution(ResolutionEnum::SD);
-$body->setCustomerResolution(null);
-$body->setSamplingType(SamplingTypeEnum::PERCENT);
-$body->setSamplingInterval("22");
+$body->setResolution(ResolutionEnum::CUSTOMER);
+$body->setCustomerResolution([
+    'longSide'=>200,
+    'shortSide'=>200,
+]);
+//$body->setSamplingType(SamplingTypeEnum::PERCENT);
+//$body->setSamplingInterval("22");
 
 $request->setBody($body);
 $response = $client->CreateSnapshotTemplate($request);
@@ -55,7 +64,7 @@ if($response->getBody()){
 
     var_dump($response->getBody());
     $id=$response->getBody()['id'];
-    var_dump($id);
+    var_dump($id);die;
     printf("---获取截图模板---");
     $requestGet = new GetSnapshotTemplateRequest();
     $requestGet->setId($id);

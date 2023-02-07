@@ -5,12 +5,7 @@ require '../../vendor/autoload.php';
 use OSS\OSSClient;
 use OSS\OSSException;
 
-//$ak = 'inspur-ffe16c48-3672-4294-ad98-2be217c4b111-oss';
 $ak = 'NDdhOTY2YWMtYjA4NS00MWRlLWI3NDAtMjQwYTIzYWJmYmVm';
-
-//NDdhOTY2YWMtYjA4NS00MWRlLWI3NDAtMjQwYTIzYWJmYmVm
-//MWY4OWY3ZTctNzZmMS00MmRjLWE5ZTUtMTllNzQ3MjIxZWZj
-//$sk = 'WinZZW1qqIkw72IDQYSLlxzROwL4SDlgGjTdF9Wz';
 $sk = 'MWY4OWY3ZTctNzZmMS00MmRjLWE5ZTUtMTllNzQ3MjIxZWZj';
 
 $endpoint = 'http://oss.dev.inspurcloudoss.com';

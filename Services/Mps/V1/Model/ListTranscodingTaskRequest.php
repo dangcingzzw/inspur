@@ -17,7 +17,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static $openAPIModelName = 'DeleteTransingTaskRequest';
+    protected static $openAPIModelName = 'ListTranscodingTaskRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -28,6 +28,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'pageNo' => 'int',
         'pageSize' => 'int',
+        'executeStatus' => 'string',
         'startDate' => 'string',
         'endDate' => 'string',
         'timestamp' => 'string',
@@ -44,6 +45,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'pageNo' => 1,
         'pageSize' => 10,
+        'executeStatus' => '',
         'startDate' => '',
         'endDate' => '',
         'timestamp' => '',
@@ -74,6 +76,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'pageNo' => 'pageNo',
         'pageSize' => 'pageSize',
+        'executeStatus' => 'executeStatus',
         'startDate' => 'startDate',
         'endDate' => 'endDate',
         'timestamp' => 'timestamp',
@@ -84,6 +87,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     protected static $setters = [
         'pageNo' => 'setPageNo',
         'pageSize' => 'setPageSize',
+        'executeStatus' => 'setExecuteStatus',
         'startDate' => 'setStartDate',
         'endDate' => 'setEndDate',
         'timestamp' => 'setTimestamp',
@@ -93,6 +97,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     protected static $getters = [
         'pageNo' => 'getPageNo',
         'pageSize' => 'getPageSize',
+        'executeStatus' => 'getExecuteStatus',
         'startDate' => 'getStartDate',
         'endDate' => 'getEndDate',
         'timestamp' => 'getTimestamp',
@@ -158,6 +163,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     {
         $this->container['pageNo'] = isset($data['pageNo']) ? $data['pageNo'] : 1;
         $this->container['pageSize'] = isset($data['pageSize']) ? $data['pageSize'] : 10;
+        $this->container['executeStatus'] = isset($data['executeStatus']) ? $data['executeStatus'] : null;
         $this->container['startDate'] = isset($data['startDate']) ? $data['startDate'] : null;
         $this->container['endDate'] = isset($data['endDate']) ? $data['endDate'] : null;
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : time().rand(100,999);;
@@ -205,6 +211,16 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     public function setPageSize($pageSize)
     {
         $this->container['pageSize'] = $pageSize;
+        return $this;
+    }
+    public function getExecuteStatus()
+    {
+        return $this->container['executeStatus'];
+    }
+
+    public function setExecuteStatus($executeStatus)
+    {
+        $this->container['executeStatus'] = $executeStatus;
         return $this;
     }
     public function getStartDate()

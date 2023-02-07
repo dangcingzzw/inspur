@@ -9,6 +9,7 @@ use Inspur\SDK\Mps\V1\Model\CreateTranscodingTaskRequest;
 use Inspur\SDK\Mps\V1\Model\GetTranscodingTaskRequest;
 use Inspur\SDK\Mps\V1\Model\ListTranscodingTaskRequest;
 use Inspur\SDK\Mps\V1\MpsClient;
+use Inspur\SDK\Mps\V1\Enum\ExecuteStatusEnum;
 
 /**
  * input   需要转码处理的文件输入信息。
@@ -39,7 +40,16 @@ $client = MpsClient::newBuilder()
     ->withEndpoint($endpoint)
     ->withCredentials($credentials)
     ->build();
+printf("---转码任务列表---");
+$requestList = new ListTranscodingTaskRequest();
+$requestList->setPageNo(1);
+$requestList->setPageSize(2);
+$requestList->setExecuteStatus(ExecuteStatusEnum::COMPLETED);
+$requestList->setStartDate("2022-05-01T00:00:00Z");
+$requestList->setEndDate("2022-12-01T00:00:00Z");
 
+$responseDelete = $client->listTransCodingTask($requestList);
+var_dump($responseDelete->getBody());die;
 
 printf("---创建转码任务---");
 $request = new CreateTranscodingTaskRequest();
@@ -49,8 +59,8 @@ $body->setInput([
     'object' => 'input/SampleVideo_1280x720_1mb.mp4',
 ]);
 $body->setOutput([
-    'bucket' => 'output/  ',
-    'object' => '电视剧/2022/',
+    'bucket' => 'output  ',
+    'object' => '电视剧/2022/xxxtest.mp4'
 ]);
 $body->setMediaProcessTaskInput([
     'transcodeTaskInput' => [
@@ -68,6 +78,7 @@ $request->setBody($body);
 $response = $client->CreateTransCodingTask($request);
 $id=$response->getBody()['taskId'];
 
+
 printf("---获取转码任务---");
 $requestGet = new GetTransCodingTaskRequest();
 $requestGet->setId($id);
@@ -79,8 +90,9 @@ printf("---转码任务列表---");
 $requestList = new ListTranscodingTaskRequest();
 $requestList->setPageNo(1);
 $requestList->setPageSize(5);
-$requestList->setStartDate('"2021-11-15T06:13:52Z');
-$requestList->setEndDate('"2022-07-15T06:17:12Z');
+//$requestList->setExecuteStatus(ExecuteStatusEnum::QUEUING);
+$requestList->setStartDate('2022-02-10T01:42:47Z');
+$requestList->setEndDate('2022-02-17T01:59:24Z');
 
 $responseDelete = $client->listTransCodingTask($requestList);
 var_dump($responseDelete->getBody());

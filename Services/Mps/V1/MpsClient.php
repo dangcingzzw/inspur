@@ -7,6 +7,7 @@ use Inspur\SDK\Core\Client;
 use Inspur\SDK\Core\ClientBuilder;
 use Inspur\SDK\Core\Utils\ModelInterface;
 
+
 class MpsClient extends Client
 {
     protected $headerSelector;
@@ -192,13 +193,24 @@ class MpsClient extends Client
 
         $pageNo = $request['pageNo'];
         $pageSize = $request['pageSize'];
+
+
+
         $queryParams = [
-            'timestamp' => $request->getTimestamp(),
             'pageNo'=>$pageNo,
             'pageSize'=>$pageSize,
+            'timestamp' => $request->getTimestamp(),
             'nonce' => $request->getNonce(),
         ];
-
+        if(isset( $request['executeStatus']) && !empty($request['executeStatus'])){
+            $queryParams['executeStatus']=$request['executeStatus'];
+        }
+        if(isset( $request['startDate']) && !empty($request['startDate'])){
+            $queryParams['startDate']=$request['startDate'];
+        }
+        if(isset( $request['endDate']) && !empty($request['endDate'])){
+            $queryParams['endDate']=$request['endDate'];
+        }
         return $this->callApi(
             $method = 'GET',
             $resourcePath,
@@ -212,7 +224,6 @@ class MpsClient extends Client
             $requestType = '\Inspur\SDK\Mps\V1\Model\ListTranscodingTaskRequest'
         );
     }
-
     /**
      * 创建转码模板
      *
@@ -808,7 +819,6 @@ class MpsClient extends Client
                 $x_nonce
             ),
         ];
-
         return $this->doHttpRequest(
             $method,
             $resourcePath,
@@ -857,19 +867,30 @@ class MpsClient extends Client
         $stringToSign[] = "\n";
         $stringToSign[] = $str;
         $stringToSign[] = "\n";
-
         if (isset($queryParams) && !empty($queryParams)) {
             $this->SortAll($queryParams);
-            $uri=$uri.'?'.http_build_query($queryParams,'');
+
+            $tmp_query_params='';
+            foreach($queryParams as $key=>$v){
+                if($tmp_query_params==''){
+                    $tmp_query_params.=$key.'='.$v;
+                }else{
+                    $tmp_query_params.='&'.$key.'='.$v;
+                }
+            }
+            $uri=$uri.'?'.$tmp_query_params;
         }
 
         $stringToSign[] = $uri;
+
         if (isset($data) && !empty($data)) {
             $data['timestamp'] = $x_time;
             $data['nonce'] = $x_random;
             $stringToSign[] = "\n";
             $stringToSign[] = md5(json_encode($data, JSON_UNESCAPED_SLASHES));
         }
+
+
         $sign = implode('', $stringToSign);
 
         return base64_encode(md5($sign));

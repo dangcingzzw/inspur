@@ -10,6 +10,21 @@ use Inspur\SDK\Mps\V1\MpsClient;
 
 class CreateWatermarkTemplateReq implements ModelInterface
 {
+    /**
+     * name  水印模板名称。
+     * watermarkType  水印类型，当前只支持Image（图片水印）。
+     * position  水印的位置。
+     * resolution  分辨率。
+     */
+    protected static $openAPITypes = [
+        'name' => 'string',
+        'picUrl' => 'string',
+        'watermarkPosition' => 'array',
+        'resolution' => 'string',
+        'timestamp' => 'string',
+        'nonce' => 'string',
+    ];
+
     const DISCRIMINATOR = null;
 
     /**
@@ -19,24 +34,12 @@ class CreateWatermarkTemplateReq implements ModelInterface
     */
     protected static $openAPIModelName = 'CreateWatermarkTemplateReq';
 
-    /**
-     * name  水印模板名称。
-     * watermarkType  水印类型，当前只支持Image（图片水印）。
-     * position  水印的位置。
-     */
-    protected static $openAPITypes = [
-        'name' => 'string',
-        'picUrl' => 'string',
-        'watermarkPosition' => 'array',
-        'timestamp' => 'string',
-        'nonce' => 'string',
-    ];
-
 
     protected static $openAPIFormats = [
         'name' => '',
         'picUrl' => '',
         'watermarkPosition' => [],
+        'resolution' => '',
         'timestamp' => '',
         'nonce' => '',
     ];
@@ -66,6 +69,7 @@ class CreateWatermarkTemplateReq implements ModelInterface
             'name' => 'name',
             'picUrl' => 'picUrl',
             'watermarkPosition' => 'watermarkPosition',
+            'resolution' => 'resolution',
             'timestamp' => 'timestamp',
             'nonce' => 'nonce',
     ];
@@ -74,6 +78,7 @@ class CreateWatermarkTemplateReq implements ModelInterface
         'name' => 'setName',
         'picUrl' => 'setPicUrl',
         'watermarkPosition' => 'setWatermarkPosition',
+        'resolution' => 'setResolution',
         'timestamp' => 'setTimestamp',
         'nonce' => 'setNonce',
     ];
@@ -82,6 +87,7 @@ class CreateWatermarkTemplateReq implements ModelInterface
         'name' => 'getName',
         'picUrl' => 'getPicUrl',
         'watermarkPosition' => 'getWatermarkPosition',
+        'resolution' => 'getResolution',
         'timestamp' => 'getTimestamp',
         'nonce' => 'getNonce',
     ];
@@ -146,6 +152,7 @@ class CreateWatermarkTemplateReq implements ModelInterface
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['picUrl'] = isset($data['picUrl']) ? $data['picUrl'] : null;
         $this->container['watermarkPosition'] = isset($data['watermarkPosition']) ? $data['watermarkPosition'] : null;
+        $this->container['resolution'] = isset($data['resolution']) ? $data['resolution'] : null;
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : time().rand(100,999);;
         $this->container['nonce'] = isset($data['nonce']) ? $data['nonce'] : (new MpsClient())->uuid();
 
@@ -229,6 +236,15 @@ class CreateWatermarkTemplateReq implements ModelInterface
     public function setName($name)
     {
         $this->container['name'] = $name;
+        return $this;
+    }
+
+    public function getResolution(){
+        return $this->container['resolution'];
+    }
+
+    public function setResolution($resolution){
+        $this->container['resolution']=$resolution;
         return $this;
     }
 

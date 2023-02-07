@@ -9,6 +9,7 @@ use Inspur\SDK\Mps\V1\Model\CreateWatermarkTemplateRequest;
 use Inspur\SDK\Mps\V1\Model\GetWatermarkTemplateRequest;
 use Inspur\SDK\Mps\V1\Model\DeleteWatermarkTemplateRequest;
 use Inspur\SDK\Mps\V1\MpsClient;
+use \Inspur\SDK\Mps\V1\Enum\ResolutionEnum;
 
 /**
  * name  水印模板名称。
@@ -39,13 +40,13 @@ $client = MpsClient::newBuilder()
 printf("---创建水印模板---");
 $request = new CreateWatermarkTemplateRequest();
 $body = new CreateWatermarkTemplateReq();
-$body->setName("resttt12");
+$body->setName("resttt127");
 $body->setPicUrl("http://10.110.29.239:9100/mps/20220704/4516effb-e404-4f79-a50a-3172634e9ee8.png");
 $body->setWatermarkPosition([
-    'width' => "100",
-    'height' => "100",
-    'top' => "80",
-    'left' => "80"
+    'width' => 100,
+    'height' => 100,
+    'top' => 80,
+    'left' => 80
 ]);
 $request->setBody($body);
 
@@ -54,7 +55,7 @@ $response = $client->CreateWatermarkTemplate($request);
 if($response->getBody()){
     var_dump($response->getBody());
     $id=$response->getBody()['id'];
-    var_dump($id);
+    var_dump($id);die;
 
     printf("---获取水印模板---");
     $requestGet = new GetWatermarkTemplateRequest();
@@ -66,7 +67,6 @@ if($response->getBody()){
     printf("---删除水印模板---");
     $requestDelete = new DeleteWatermarkTemplateRequest();
     $requestDelete->setId($id);
-
     $responseDelete = $client->deleteWatermarkTemplate($requestDelete);
     var_dump($responseDelete->getBody());
 }
