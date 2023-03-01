@@ -10,55 +10,54 @@ use Inspur\SDK\Mps\V1\MpsClient;
 
 class CreateWatermarkTemplateReq implements ModelInterface
 {
+    const DISCRIMINATOR = null;
+
+    /**
+     * The original name of the model.
+     *
+     * @var string
+     */
+    protected static $openAPIModelName = 'CreateWatermarkTemplateReq';
+
     /**
      * name  水印模板名称。
      * watermarkType  水印类型，当前只支持Image（图片水印）。
      * position  水印的位置。
-     * resolution  分辨率。
      */
     protected static $openAPITypes = [
         'name' => 'string',
         'picUrl' => 'string',
         'watermarkPosition' => 'array',
-        'resolution' => 'string',
+        "resolution"=>'string',
         'timestamp' => 'string',
         'nonce' => 'string',
     ];
-
-    const DISCRIMINATOR = null;
-
-    /**
-    * The original name of the model.
-    *
-    * @var string
-    */
-    protected static $openAPIModelName = 'CreateWatermarkTemplateReq';
 
 
     protected static $openAPIFormats = [
         'name' => '',
         'picUrl' => '',
         'watermarkPosition' => [],
-        'resolution' => '',
+        "resolution"=>'',
         'timestamp' => '',
         'nonce' => '',
     ];
 
     /**
-    * Array of property to type mappings. Used for (de)serialization
-    *
-    * @return array
-    */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @return array
+     */
     public static function openAPITypes()
     {
         return self::$openAPITypes;
     }
 
     /**
-    * Array of property to format mappings. Used for (de)serialization
-    *
-    * @return array
-    */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @return array
+     */
     public static function openAPIFormats()
     {
         return self::$openAPIFormats;
@@ -66,12 +65,12 @@ class CreateWatermarkTemplateReq implements ModelInterface
 
 
     protected static $attributeMap = [
-            'name' => 'name',
-            'picUrl' => 'picUrl',
-            'watermarkPosition' => 'watermarkPosition',
-            'resolution' => 'resolution',
-            'timestamp' => 'timestamp',
-            'nonce' => 'nonce',
+        'name' => 'name',
+        'picUrl' => 'picUrl',
+        'watermarkPosition' => 'watermarkPosition',
+        "resolution"=>'resolution',
+        'timestamp' => 'timestamp',
+        'nonce' => 'nonce',
     ];
 
     protected static $setters = [
@@ -93,60 +92,60 @@ class CreateWatermarkTemplateReq implements ModelInterface
     ];
 
     /**
-    * Array of attributes where the key is the local name,
-    * and the value is the original name
-    *
-    * @return array
-    */
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @return array
+     */
     public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-    * Array of attributes to setter functions (for deserialization of responses)
-    *
-    * @return array
-    */
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @return array
+     */
     public static function setters()
     {
         return self::$setters;
     }
 
     /**
-    * Array of attributes to getter functions (for serialization of requests)
-    *
-    * @return array
-    */
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @return array
+     */
     public static function getters()
     {
         return self::$getters;
     }
 
     /**
-    * The original name of the model.
-    *
-    * @return string
-    */
+     * The original name of the model.
+     *
+     * @return string
+     */
     public function getModelName()
     {
         return self::$openAPIModelName;
     }
 
-    
+
     /**
-    * Associative array for storing property values
-    *
-    * @var mixed[]
-    */
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
     protected $container = [];
 
     /**
-    * Constructor
-    *
-    * @param mixed[] $data Associated array of property values
-    *                      initializing the model
-    */
+     * Constructor
+     *
+     * @param mixed[] $data Associated array of property values
+     *                      initializing the model
+     */
     public function __construct(array $data = null)
     {
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
@@ -160,10 +159,10 @@ class CreateWatermarkTemplateReq implements ModelInterface
 
 
     /**
-    * Show all the invalid properties with reasons.
-    *
-    * @return array invalid properties with reasons
-    */
+     * Show all the invalid properties with reasons.
+     *
+     * @return array invalid properties with reasons
+     */
     public function listInvalidProperties()
     {
         $invalidProperties = [];
@@ -175,27 +174,35 @@ class CreateWatermarkTemplateReq implements ModelInterface
     }
 
     /**
-    * Validate all the properties in the model
-    * return true if all passed
-    *
-    * @return bool True if all properties are valid
-    */
+     * Validate all the properties in the model
+     * return true if all passed
+     *
+     * @return bool True if all properties are valid
+     */
     public function valid()
     {
         return count($this->listInvalidProperties()) === 0;
     }
 
     /**
-    * Gets name
-    *  水印模板名称。
-    *
-    * @return string
-    */
+     * Gets name
+     *  水印模板名称。
+     *
+     * @return string
+     */
     public function getName()
     {
         return $this->container['name'];
     }
-
+    public function getResolution()
+    {
+        return $this->container['resolution'];
+    }
+    public function setResolution($resolution)
+    {
+        $this->container['resolution']=$resolution;
+        return $this;
+    }
     public function getPicUrl()
     {
         return $this->container['picUrl'];
@@ -236,15 +243,6 @@ class CreateWatermarkTemplateReq implements ModelInterface
     public function setName($name)
     {
         $this->container['name'] = $name;
-        return $this;
-    }
-
-    public function getResolution(){
-        return $this->container['resolution'];
-    }
-
-    public function setResolution($resolution){
-        $this->container['resolution']=$resolution;
         return $this;
     }
 

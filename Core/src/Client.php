@@ -405,9 +405,7 @@ class Client
         $returnDataArr=json_decode((string) $responseBody,true);
         $returnData->setBody((string) $responseBody);
 
-
         if(isset($returnDataArr['code'])){
-
             var_dump($returnDataArr['message']);
             $returnData->setBody($returnDataArr['result']);
         }else{

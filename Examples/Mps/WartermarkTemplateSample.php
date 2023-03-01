@@ -21,9 +21,9 @@ use \Inspur\SDK\Mps\V1\Enum\ResolutionEnum;
  *      height  水印高度，单位px；取值范围：8-4096，且只能为整数和偶数
  */
 
-$ak = "ZGM2MjNiMzAtYzkxOC00NTgwLWE1YTQtZGQ1ZjU4MTczNWU3";
-$sk = "NDEzMDRiNTctNjIxNS00YTAwLWFlN2QtZTc4MTNkZThiYjFm";
-$endpoint = "https://service-dev.inspurcloud.cn";
+$ak = "MGNhNTBiOTctZjg4NC00NTk4LThjYmItNTk4ZmQzMDVhZjNm";
+$sk = "M2M5OTNiMzMtMjk5ZS00MmFiLWE0NjYtYzQ0NTAzZWU3YzI3";
+$endpoint = "https://mps.cn-north-3.inspurcloudapi.com";
 $projectId = "/mps/openapi";
 $credentials = new BasicCredentials($ak, $sk, $projectId);
 $config = HttpConfig::getDefaultConfig();
@@ -40,8 +40,8 @@ $client = MpsClient::newBuilder()
 printf("---创建水印模板---");
 $request = new CreateWatermarkTemplateRequest();
 $body = new CreateWatermarkTemplateReq();
-$body->setName("resttt127");
-$body->setPicUrl("http://10.110.29.239:9100/mps/20220704/4516effb-e404-4f79-a50a-3172634e9ee8.png");
+$body->setName("rest8892");
+$body->setPicUrl("https://vod-region-test-20220.oss.cn-north-3.inspurcloudoss.com/7d89153387e0f3ffc41641cc4fb91cc1.png");
 $body->setWatermarkPosition([
     'width' => 100,
     'height' => 100,

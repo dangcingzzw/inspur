@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb69b588b16caca8f1985a4d317f6597",
+    "content-hash": "00c389a7a9957b179c1bf07a01e47117",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -226,12 +226,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "ddb46aeea6423f504136cff6989ae39064301eef"
+                "reference": "58d0734481de3fbc62f3d13da4d991e051521282"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/ddb46aeea6423f504136cff6989ae39064301eef",
-                "reference": "ddb46aeea6423f504136cff6989ae39064301eef",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/58d0734481de3fbc62f3d13da4d991e051521282",
+                "reference": "58d0734481de3fbc62f3d13da4d991e051521282",
                 "shasum": ""
             },
             "require": {
@@ -338,7 +338,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-27T19:02:55+00:00"
+            "time": "2023-02-15T13:59:53+00:00"
         },
         {
             "name": "inspurcloud/php-oss-sdk",
@@ -346,12 +346,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dangcingzzw/inspurcloud.git",
-                "reference": "b529e2d663181596a696a777f6853165df2df612"
+                "reference": "1567e0d6898b5b520d420d8fbef4332de2ed0891"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dangcingzzw/inspurcloud/zipball/b529e2d663181596a696a777f6853165df2df612",
-                "reference": "b529e2d663181596a696a777f6853165df2df612",
+                "url": "https://api.github.com/repos/dangcingzzw/inspurcloud/zipball/1567e0d6898b5b520d420d8fbef4332de2ed0891",
+                "reference": "1567e0d6898b5b520d420d8fbef4332de2ed0891",
                 "shasum": ""
             },
             "require": {
@@ -380,9 +380,9 @@
             "description": "OSS PHP SDK",
             "support": {
                 "issues": "https://github.com/dangcingzzw/inspurcloud/issues",
-                "source": "https://github.com/dangcingzzw/inspurcloud/tree/1.0.13"
+                "source": "https://github.com/dangcingzzw/inspurcloud/tree/3.0"
             },
-            "time": "2022-12-02T09:23:22+00:00"
+            "time": "2023-03-01T06:38:34+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -390,12 +390,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "1387e02612584ffa1a9e93384d2d63ba0a747e11"
+                "reference": "f259e2b15fb95494c83f52d3caad003bbf5ffaa1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1387e02612584ffa1a9e93384d2d63ba0a747e11",
-                "reference": "1387e02612584ffa1a9e93384d2d63ba0a747e11",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/f259e2b15fb95494c83f52d3caad003bbf5ffaa1",
+                "reference": "f259e2b15fb95494c83f52d3caad003bbf5ffaa1",
                 "shasum": ""
             },
             "require": {
@@ -484,7 +484,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-14T15:01:04+00:00"
+            "time": "2023-02-06T13:44:46+00:00"
         },
         {
             "name": "psr/http-client",
@@ -749,12 +749,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "e8b495ea28c1d97b5e0c121748d6f9b53d075c66"
+                "reference": "80d075412b557d41002320b96a096ca65aa2c98d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/e8b495ea28c1d97b5e0c121748d6f9b53d075c66",
-                "reference": "e8b495ea28c1d97b5e0c121748d6f9b53d075c66",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/80d075412b557d41002320b96a096ca65aa2c98d",
+                "reference": "80d075412b557d41002320b96a096ca65aa2c98d",
                 "shasum": ""
             },
             "require": {
@@ -808,7 +808,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T09:53:40+00:00"
+            "time": "2023-01-24T14:02:46+00:00"
         }
     ],
     "packages-dev": [],

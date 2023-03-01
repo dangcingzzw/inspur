@@ -5,12 +5,12 @@ require '../../vendor/autoload.php';
 use OSS\OSSClient;
 use OSS\OSSException;
 
-$ak = 'NDdhOTY2YWMtYjA4NS00MWRlLWI3NDAtMjQwYTIzYWJmYmVm';
-$sk = 'MWY4OWY3ZTctNzZmMS00MmRjLWE5ZTUtMTllNzQ3MjIxZWZj';
+$ak = 'MzcyMjhjM2YtOGQwMi00YTE2LTk5MTQtZTZhY2U2NDE5ODFi';
+$sk = 'MGEyYTY2NzQtNGM1MC00ODIzLWI1NjUtZWQ5NWQzOWZjYmJh';
 
-$endpoint = 'http://oss.dev.inspurcloudoss.com';
+$endpoint = 'http://oss.cn-north-3.inspurcloudoss.com';
 //$endpoint = 'http://10.110.29.24';
-$bucketName = 'mps-test';
+$bucketName = 'zzwtest';
 
 
 $OSSClient = OSSClient::factory([
@@ -25,12 +25,28 @@ try {
      * file:文件路径
      */
     printf("获取元数据示例");
-    $res = $OSSClient->getAvInfoOperation([
-        'body' => [
-            'file' => 'https://mps-test.oss.dev.inspurcloudoss.com/input/2001-04-11.asf',
-        ]
+//    $res = $OSSClient->getAvInfoOperation([
+//        'body' => [
+//            'file' => 'https://mps-test.oss.dev.inspurcloudoss.com/input/2001-04-11.asf',
+//        ]
+//    ]);
+//    $res=$OSSClient->putObject([
+//        'Bucket'=>$bucketName,
+//        'Key'=>'testzzw32.png',
+//        'SourceFile'=>'C:\Users\dangcingzzw\Pictures\微信图片_20220801162748.png'
+//    ]);
+//    $resp=$OSSClient->createBucket([
+//        'Bucket' => 'zzwtest',
+//    ]);
+//    $OSSClient->setBucketAcl ([
+//        'Bucket' => $bucketName,
+//        'ACL' => OSSClient::AclPrivate,
+//    ]);
+
+    $resp = $OSSClient->getBucketAcl ([
+        'Bucket' => $bucketName
     ]);
-    var_dump($res);
+    var_dump($resp);
     die;
 } catch (OSSException $e) {
     echo 'Response Code:' . $e->getStatusCode() . PHP_EOL;
