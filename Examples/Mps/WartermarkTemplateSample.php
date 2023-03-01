@@ -48,6 +48,7 @@ $body->setWatermarkPosition([
     'top' => 80,
     'left' => 80
 ]);
+$body->setResolution(ResolutionEnum::SD);
 $request->setBody($body);
 
 $response = $client->CreateWatermarkTemplate($request);
