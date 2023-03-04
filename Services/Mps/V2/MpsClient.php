@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspur\SDK\Mps\V1;
+namespace Inspur\SDK\Mps\V2;
 
 use Inspur\SDK\Core\Exceptions\SdkErrorMessage;
 use Inspur\SDK\Core\Utils\HeaderSelector;
@@ -42,7 +42,7 @@ class MpsClient extends Client
 
     public function createTranscodingTaskWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/v1/transcoding-tasks';
+        $resourcePath = '/mps/openapi/V2/transcoding-tasks';
         $formParams = [];
         $queryParams = [];
         $pathParams = [];
@@ -71,8 +71,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\CreateTranscodingTaskResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\CreateTranscodingTaskRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\CreateTranscodingTaskResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\CreateTranscodingTaskRequest'
         );
     }
 
@@ -91,7 +91,7 @@ class MpsClient extends Client
 
     public function getTranscodingTaskWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/v1/transcoding-task-info';
+        $resourcePath = '/mps/openapi/V2/transcoding-task-info';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -140,8 +140,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\getTranscodingTaskResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\getTranscodingTaskRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\getTranscodingTaskResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\getTranscodingTaskRequest'
         );
     }
 
@@ -160,7 +160,7 @@ class MpsClient extends Client
 
     public function listTranscodingTaskWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/v1/transcoding-task-list';
+        $resourcePath = '/mps/openapi/V2/transcoding-task-list';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -221,8 +221,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\ListTranscodingTaskResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\ListTranscodingTaskRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\ListTranscodingTaskResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\ListTranscodingTaskRequest'
         );
     }
 
@@ -241,7 +241,7 @@ class MpsClient extends Client
 
     public function createTranscodeTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/v1/transcode-templates';
+        $resourcePath = '/mps/openapi/V2/transcode-templates';
         $formParams = [];
         $queryParams = [];
         $pathParams = [];
@@ -271,8 +271,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\CreateTranscodeTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\CreateTranscodeTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\CreateTranscodeTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\CreateTranscodeTemplateRequest'
         );
     }
 
@@ -291,7 +291,7 @@ class MpsClient extends Client
 
     public function getTranscodeTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/v1/transcode-templates';
+        $resourcePath = '/mps/openapi/V2/transcode-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -339,8 +339,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\getTranscodeTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\getTranscodeTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\getTranscodeTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\getTranscodeTemplateRequest'
         );
     }
 
@@ -359,7 +359,7 @@ class MpsClient extends Client
 
     public function deleteTranscodeTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/v1/transcode-templates';
+        $resourcePath = '/mps/openapi/V2/transcode-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -407,8 +407,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\deleteTranscodeTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\deleteTranscodeTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\deleteTranscodeTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\deleteTranscodeTemplateRequest'
         );
     }
 
@@ -427,9 +427,7 @@ class MpsClient extends Client
 
     public function createWatermarkTemplateWithHttpInfo($request)
     {
-
-
-        $resourcePath = '/regionsvc-cn-north-3/mps/watermark';
+        $resourcePath = '/mps/openapi/V2/wartermark-templates';
         $formParams = [];
         $queryParams = [];
         $pathParams = [];
@@ -449,14 +447,6 @@ class MpsClient extends Client
         if ($localVarParams['body'] !== null) {
             $httpBody = $localVarParams['body'];
         }
-        $picInfo = $this->curlData(
-            $httpBody->getPicUrl(),
-            'https://service.cloud.inspur.com/regionsvc-cn-north-3/mps/file/upload'
-        );
-        $httpBody->setRegion('cn-north-3');
-        $httpBody->setPicId($picInfo['id']);
-        $httpBody->setPicUrl($picInfo['url']);
-        $httpBody->setPosition(json_encode($httpBody->getPosition()));
 
         return $this->callApi(
             $method = 'POST',
@@ -467,8 +457,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\CreateWatermarkTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\CreateWatermarkTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\CreateWatermarkTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\CreateWatermarkTemplateRequest'
         );
     }
 
@@ -487,7 +477,7 @@ class MpsClient extends Client
 
     public function getWatermarkTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/regionsvc-cn-north-3/mps/watermark/cn-north-3';
+        $resourcePath = '/mps/openapi/V2/wartermark-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -535,8 +525,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\GetWatermarkTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\GetWatermarkTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\GetWatermarkTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\GetWatermarkTemplateRequest'
         );
     }
 
@@ -555,7 +545,7 @@ class MpsClient extends Client
 
     public function deleteWatermarkTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/v1/watermark-templates';
+        $resourcePath = '/mps/openapi/V2/wartermark-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -603,8 +593,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\deleteWatermarkTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\deleteWatermarkTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\deleteWatermarkTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\deleteWatermarkTemplateRequest'
         );
     }
 
@@ -624,7 +614,7 @@ class MpsClient extends Client
 
     public function createSnapshotTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/v1/snapshot-templates';
+        $resourcePath = '/mps/openapi/V2/snapshot-templates';
         $formParams = [];
         $queryParams = [];
         $pathParams = [];
@@ -653,8 +643,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\CreateSnapshotTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\CreateSnapshotTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\CreateSnapshotTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\CreateSnapshotTemplateRequest'
         );
     }
 
@@ -673,7 +663,7 @@ class MpsClient extends Client
 
     public function getSnapshotTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/v1/snapshot-templates';
+        $resourcePath = '/mps/openapi/V2/snapshot-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -721,8 +711,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\getSnapshotTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\getSnapshotTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\getSnapshotTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\getSnapshotTemplateRequest'
         );
     }
 
@@ -741,7 +731,7 @@ class MpsClient extends Client
 
     public function deleteSnapshotTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/v1/snapshot-templates';
+        $resourcePath = '/mps/openapi/V2/snapshot-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -789,8 +779,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\deleteSnapshotTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\deleteSnapshotTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\deleteSnapshotTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\deleteSnapshotTemplateRequest'
         );
     }
 
@@ -920,25 +910,5 @@ class MpsClient extends Client
         $output .= implode("\n", $lines);
         return $output . "\n";
     }
-    private function curlData($furl, $url)
-    {
-        $header[] = 'Authorization:bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJUODdMZjF5azliU1JNWTAtLVRlWlJwekRQdnY5WTNPb2xpanZRaUZkcG9NIn0.eyJqdGkiOiJhOWYzNzFlNC0wZTVlLTQ4OWEtYmI1Ny0zOGRmMTA3YmMxOWYiLCJleHAiOjE2Nzc5MTE5NjMsIm5iZiI6MCwiaWF0IjoxNjc3OTA2NTYzLCJpc3MiOiJodHRwczovL2F1dGgxLmNsb3VkLmluc3B1ci5jb20vYXV0aC9yZWFsbXMvcGljcCIsImF1ZCI6WyJpbnNpZ2h0IiwiaW90LWh1YiIsImRiLXNlcnZpY2UiLCJjbGllbnQtZGFuZ2Npbmd6enciXSwic3ViIjoiMzdkMGVmYjAtMGU2ZS00OTM4LTliMTItMDZjNmNmYjRkMjY0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiY29uc29sZSIsIm5vbmNlIjoiNDU4ZTA1ODAtNDI3OC00YjA5LThkMTktZTUxY2NiZWYwYTBlIiwiYXV0aF90aW1lIjoxNjc3ODk3MzczLCJzZXNzaW9uX3N0YXRlIjoiMmNmOTc0ZDAtNzg2Yy00NmYwLWI2OTgtNTNlMDg0ODhlNzJhIiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJBQ0NPVU5UX0FETUlOIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7Imluc2lnaHQiOnsicm9sZXMiOlsiYWRtaW4iXX0sImlvdC1odWIiOnsicm9sZXMiOlsiYWRtaW4iXX0sImRiLXNlcnZpY2UiOnsicm9sZXMiOlsiYWRtaW4iXX0sImNsaWVudC1kYW5nY2luZ3p6dyI6eyJyb2xlcyI6WyJhZG1pbiJdfX0sInNjb3BlIjoib3BlbmlkIiwicGhvbmUiOiIxNzg2MjkwMjUxNSIsImdyb3VwcyI6WyIvZ3JvdXAtZGFuZ2Npbmd6enciXSwicHJvamVjdCI6ImRhbmdjaW5nenp3IiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZGFuZ2Npbmd6enciLCJlbWFpbCI6ImRhbmdjaW5nenp3QDE2My5jb20ifQ.g0VvdenBz_LcyQ16IscV3rcVGMRDvBhayxFhijQuQdDPe1Cwzro-d5h28_SOlhSILbXoJhaDovqPKTAYQX96_Zij6iF-q6yaoNVuVX4WQAYdt59R00QuyTrMGLTPD8x6riOW9upchRle3MHrKr6tE-5XClpYglDIeBHnbmy_euvJ5SLCp1d20__BkEJXo1DR96-o11abT1zfOx1fTxmGj-ajGA8HB7wu8iih8a-bxzrYaTvP1-lSVnqmxGe7qy7auvfHH-RkQ69M5sD6f9mMSzmG9dECqXy2rsEaaw3oWUuvH-lIa4iufBawGqYUkx4TVg4bRALb-7hbJR3pq08EUA'; // 上传的地址
 
-        $ch = curl_init();
-        curl_setopt($ch , CURLOPT_URL , $url);
-        curl_setopt($ch,CURLOPT_HTTPHEADER,$header);
-        curl_setopt($ch , CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch , CURLOPT_POST, 1);
-        // 注意这里的'file'是上传地址指定的key名
-        curl_setopt($ch , CURLOPT_POSTFIELDS, array('file' => new \CURLFile(realpath($furl))));
-        $output = curl_exec($ch);
-        curl_close($ch);
-        $response= json_decode($output,true);
-
-        if(isset($response['result']) && !empty($response['result'])){
-            return $response['result'];
-        }else{
-            return (new SdkErrorMessage())->setErrorMsg('文件上传失败');
-        }
-    }
 }

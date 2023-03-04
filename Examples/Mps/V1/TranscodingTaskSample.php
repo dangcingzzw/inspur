@@ -28,9 +28,10 @@ use Inspur\SDK\Mps\V1\Enum\ExecuteStatusEnum;
  *             snapshotMode 截图模式： beforeTranscoding:转码之前截图;afterTranscoding:转码之后截图； 如果截图模板ID为空，该字段为空； 如果截图模板ID不为空的情况下，默认为转码之后截图；
  */
 
-$ak = "ZGM2MjNiMzAtYzkxOC00NTgwLWE1YTQtZGQ1ZjU4MTczNWU3";
-$sk = "NDEzMDRiNTctNjIxNS00YTAwLWFlN2QtZTc4MTNkZThiYjFm";
-$endpoint = "https://service-dev.inspurcloud.cn";
+$ak = "MGNhNTBiOTctZjg4NC00NTk4LThjYmItNTk4ZmQzMDVhZjNm";
+$sk = "M2M5OTNiMzMtMjk5ZS00MmFiLWE0NjYtYzQ0NTAzZWU3YzI3";
+//$endpoint = "https://mps.cn-north-3.inspurcloudapi.com";
+$endpoint = "https://service.cloud.inspur.com";
 $projectId = "/mps/openapi";
 $credentials = new BasicCredentials($ak, $sk, $projectId);
 $config = HttpConfig::getDefaultConfig();

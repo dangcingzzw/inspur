@@ -29,9 +29,10 @@ use Inspur\SDK\Mps\V1\Enum\ChannelsAudioEnum;
  *        shortSide 分辨率高度：取值范围：128-4096，且必须为整数和偶数；其中宽度和高度都为空，则分辨率和原视频保持一致。宽度为空，高度不为空，则按高度等比例缩放。宽度不为空，高度为空，则按宽度等比例缩放。均不为空，则根据宽度和高度缩放）
  */
 
-$ak = "ZGM2MjNiMzAtYzkxOC00NTgwLWE1YTQtZGQ1ZjU4MTczNWU3";
-$sk = "NDEzMDRiNTctNjIxNS00YTAwLWFlN2QtZTc4MTNkZThiYjFm";
-$endpoint = "https://service-dev.inspurcloud.cn";
+$ak = "MGNhNTBiOTctZjg4NC00NTk4LThjYmItNTk4ZmQzMDVhZjNm";
+$sk = "M2M5OTNiMzMtMjk5ZS00MmFiLWE0NjYtYzQ0NTAzZWU3YzI3";
+//$endpoint = "https://mps.cn-north-3.inspurcloudapi.com";
+$endpoint = "https://service.cloud.inspur.com";
 $projectId = "/mps/openapi";
 $credentials = new BasicCredentials($ak, $sk, $projectId);
 $config = HttpConfig::getDefaultConfig();
@@ -45,7 +46,7 @@ $client = MpsClient::newBuilder()
 printf("---创建转码模板---");
 $request = new CreateTranscodeTemplateRequest();
 $body = new CreateTranscodeTemplateReq();
-$body->setName('HLS-H264-自定义分辨率-test5');
+$body->setName('HLS-H264-自定义分辨率-test15');
 $body->setContainerType(ContainerTypeEnum::HLS);
 $body->setVideo([
     'bitrateVideo' => '100',
@@ -73,7 +74,7 @@ if ($response->getBody()) {
     var_dump($response->getBody());
     $id = $response->getBody()['id'];
     var_dump($id);
-    die;
+
 
     printf("---获取转码模板---");
     $requestGet = new GetTranscodeTemplateRequest();

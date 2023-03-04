@@ -14,6 +14,7 @@ use \Inspur\SDK\Mps\V1\Enum\ResolutionEnum;
 /**
  * name  水印模板名称。
  * watermarkType  水印类型，当前只支持Image（图片水印）。
+ * picUrl  图片本地路径。
  * position  水印的位置。
  *      left 水印距离视频左上角左边位置，单位px；取值范围：8-4096，且只能为整数
  *      top  水印距离视频左上角的上方位置，单位px；取值范围：8-4096，且只能为整数
@@ -23,8 +24,8 @@ use \Inspur\SDK\Mps\V1\Enum\ResolutionEnum;
 
 $ak = "MGNhNTBiOTctZjg4NC00NTk4LThjYmItNTk4ZmQzMDVhZjNm";
 $sk = "M2M5OTNiMzMtMjk5ZS00MmFiLWE0NjYtYzQ0NTAzZWU3YzI3";
-$endpoint = "https://mps.cn-north-3.inspurcloudapi.com";
-$projectId = "/mps/openapi";
+$endpoint = "https://service.cloud.inspur.com";
+$projectId = "/cn-north-3";
 $credentials = new BasicCredentials($ak, $sk, $projectId);
 $config = HttpConfig::getDefaultConfig();
 
@@ -40,14 +41,16 @@ $client = MpsClient::newBuilder()
 printf("---创建水印模板---");
 $request = new CreateWatermarkTemplateRequest();
 $body = new CreateWatermarkTemplateReq();
-$body->setName("rest8892");
-$body->setPicUrl("https://vod-region-test-20220.oss.cn-north-3.inspurcloudoss.com/7d89153387e0f3ffc41641cc4fb91cc1.png");
-$body->setWatermarkPosition([
+$body->setName("zzw123a");
+$body->setPicUrl("C:\Users\dangcingzzw\Pictures\aaa.png");
+$body->setPosition([
     'width' => 100,
     'height' => 100,
     'top' => 80,
     'left' => 80
 ]);
+
+
 $body->setResolution(ResolutionEnum::SD);
 $request->setBody($body);
 
@@ -56,7 +59,7 @@ $response = $client->CreateWatermarkTemplate($request);
 if($response->getBody()){
     var_dump($response->getBody());
     $id=$response->getBody()['id'];
-    var_dump($id);die;
+    var_dump($id);
 
     printf("---获取水印模板---");
     $requestGet = new GetWatermarkTemplateRequest();

@@ -1,15 +1,36 @@
 <?php
 
-namespace Inspur\SDK\Mps\V1\Model;
+namespace Inspur\SDK\Mps\V2\Model;
 
-use \ArrayAccess;
+
 use Inspur\SDK\Core\Utils\ObjectSerializer;
 use Inspur\SDK\Core\Utils\ModelInterface;
-use Inspur\SDK\Core\SdkResponse;
-use Inspur\SDK\Mps\V1\MpsClient;
+use Inspur\SDK\Mps\V2\MpsClient;
 
-class CreateWatermarkTemplateReq implements ModelInterface
+class CreateTranscodeTemplateReq implements ModelInterface
 {
+    /**
+     * name  模板名称。
+     * containerType  封装格式(可选MP4,HLS,FLV中的一种)
+     * video  视频模板配置参数
+     *        bitrateVideo 视频码率（10-50000，只能为整数， 单位kbps）
+     *        vcodec 视频编码（H.264 High、H.264 Main、H.264 Baseline、 H.265 Main）
+     *        resolution 分辨率（分辨率标清：SD->标清：640480、HD->高清：1280720、FHD->全高清：19201080、2K->2K：20481440、4K->4K：3840*2160、customer->自定义。其中：当分辨率选用为 customer时，customerResolution参数必须选用。)
+     *        customerResolution  用户自定义分辨率信息
+     *        freqVideo  视频帧率(1-60，只能为整数)
+     * audio  音频模板配置参数
+     *        longSide 分辨率宽度：取值范围：128-4096，且必须为整数和偶数；其中宽度和高度都为空，则分辨率和原视频保持一致。宽度为空，高度不为空，则按高度等比例缩放。宽度不为空，高度为空，则按宽度等比例缩放。均不为空，则根据宽度和高度缩放）
+     *        shortSide 分辨率高度：取值范围：128-4096，且必须为整数和偶数；其中宽度和高度都为空，则分辨率和原视频保持一致。宽度为空，高度不为空，则按高度等比例缩放。宽度不为空，高度为空，则按宽度等比例缩放。均不为空，则根据宽度和高度缩放）
+     */
+    protected static $openAPITypes = [
+        'name' => 'string',
+        'containerType' => 'string',
+        'video' => 'array',
+        'audio' => 'array',
+        'timestamp' => 'string',
+        'nonce' => 'string'
+    ];
+
     const DISCRIMINATOR = null;
 
     /**
@@ -17,32 +38,13 @@ class CreateWatermarkTemplateReq implements ModelInterface
      *
      * @var string
      */
-    protected static $openAPIModelName = 'CreateWatermarkTemplateReq';
-
-    /**
-     * name  水印模板名称。
-     * watermarkType  水印类型，当前只支持Image（图片水印）。
-     * position  水印的位置。
-     */
-    protected static $openAPITypes = [
-        'name' => 'string',
-        'picUrl' => 'string',
-        'region' => 'string',
-        'picId' => 'string',
-        'position' => 'array',
-        "resolution"=>'string',
-        'timestamp' => 'string',
-        'nonce' => 'string',
-    ];
-
+    protected static $openAPIModelName = 'CreateTranscodeTemplateReq';
 
     protected static $openAPIFormats = [
         'name' => '',
-        'picUrl' => '',
-        'region' => '',
-        'picId' => '',
-        'position' => [],
-        "resolution"=>'',
+        'containerType' => '',
+        'video' => [],
+        'audio' => [],
         'timestamp' => '',
         'nonce' => '',
     ];
@@ -70,33 +72,27 @@ class CreateWatermarkTemplateReq implements ModelInterface
 
     protected static $attributeMap = [
         'name' => 'name',
-        'picUrl' => 'picUrl',
-        'region' => 'region',
-        'picId' => 'picId',
-        'position' => 'position',
-        "resolution"=>'resolution',
+        'containerType' => 'containerType',
+        'video' => 'video',
+        'audio' => 'audio',
         'timestamp' => 'timestamp',
         'nonce' => 'nonce',
     ];
 
     protected static $setters = [
         'name' => 'setName',
-        'picId' => 'setPicId',
-        'region' => 'setRegion',
-        'picUrl' => 'setPicUrl',
-        'position' => 'setPosition',
-        'resolution' => 'setResolution',
+        'containerType' => 'setContainerType',
+        'video' => 'setVideo',
+        'audio' => 'setAudio',
         'timestamp' => 'setTimestamp',
         'nonce' => 'setNonce',
     ];
 
     protected static $getters = [
         'name' => 'getName',
-        'picUrl' => 'getPicUrl',
-        'region' => 'getRegion',
-        'picId' => 'getPicId',
-        'position' => 'getPosition',
-        'resolution' => 'getResolution',
+        'containerType' => 'getContainerType',
+        'video' => 'getVideo',
+        'audio' => 'getAudio',
         'timestamp' => 'getTimestamp',
         'nonce' => 'getNonce',
     ];
@@ -159,14 +155,12 @@ class CreateWatermarkTemplateReq implements ModelInterface
     public function __construct(array $data = null)
     {
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['region'] = isset($data['region']) ? $data['region'] : 'cn-north-3';
-        $this->container['picUrl'] = isset($data['picUrl']) ? $data['picUrl'] : null;
-        $this->container['picId'] = isset($data['picId']) ? $data['picId'] : null;
-        $this->container['position'] = isset($data['position']) ? $data['position'] : null;
-        $this->container['resolution'] = isset($data['resolution']) ? $data['resolution'] : null;
+        $this->container['containerType'] = isset($data['containerType']) ? $data['containerType'] : null;
+        $this->container['video'] = isset($data['video']) ? $data['video'] : null;
+        $this->container['audio'] = isset($data['audio']) ? $data['audio'] : null;
+
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : time().rand(100,999);;
         $this->container['nonce'] = isset($data['nonce']) ? $data['nonce'] : (new MpsClient())->uuid();
-
     }
 
 
@@ -178,10 +172,6 @@ class CreateWatermarkTemplateReq implements ModelInterface
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-
         return $invalidProperties;
     }
 
@@ -198,7 +188,7 @@ class CreateWatermarkTemplateReq implements ModelInterface
 
     /**
      * Gets name
-     *  水印模板名称。
+     *  转码模板名称。
      *
      * @return string
      */
@@ -206,49 +196,37 @@ class CreateWatermarkTemplateReq implements ModelInterface
     {
         return $this->container['name'];
     }
-    public function getRegion()
+    public function setName($name)
     {
-        return $this->container['region'];
-    }
-    public function getPicId()
-    {
-        return $this->container['picId'];
-    }
-    public function setPicId($picId)
-    {
-        $this->container['picId']=$picId;
+        $this->container['name'] = $name;
         return $this;
     }
-    public function setRegion($region)
+
+    public function getContainerType()
     {
-        $this->container['region']=$region;
+        return $this->container['containerType'];
+    }
+    public function setContainerType($containerType)
+    {
+        $this->container['containerType']=$containerType;
         return $this;
     }
-    public function getResolution()
+    public function getVideo()
     {
-        return $this->container['resolution'];
+        return $this->container['video'];
     }
-    public function setResolution($resolution)
+    public function setVideo($video)
     {
-        $this->container['resolution']=$resolution;
+        $this->container['video']=$video;
         return $this;
     }
-    public function getPicUrl()
+    public function getAudio()
     {
-        return $this->container['picUrl'];
+        return $this->container['audio'];
     }
-    public function getPosition()
+    public function setAudio($audio)
     {
-        return $this->container['position'];
-    }
-    public function setPicUrl($picUrl)
-    {
-        $this->container['picUrl']=$picUrl;
-        return $this;
-    }
-    public function setPosition($watermarkPosition)
-    {
-        $this->container['position']=$watermarkPosition;
+        $this->container['audio']=$audio;
         return $this;
     }
 
@@ -270,11 +248,7 @@ class CreateWatermarkTemplateReq implements ModelInterface
         return $this;
     }
 
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-        return $this;
-    }
+
 
     public function __toString()
     {

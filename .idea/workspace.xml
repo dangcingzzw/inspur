@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d2755974-8a0a-4652-886d-099933e4aac4" name="Changes" comment="" />
+    <list default="true" id="d2755974-8a0a-4652-886d-099933e4aac4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Examples/Mps/V2/SnapshotTemplateSample.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Examples/Mps/V2/Test.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Examples/Mps/V2/TranscodeTemplateSample.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Examples/Mps/V2/TranscodingTaskSample.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Examples/Mps/V2/WartermarkTemplateSample.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/src/Http/HttpClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/Http/HttpClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/Mps/SnapshotTemplateSample.php" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Mps/V1/SnapshotTemplateSample.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/Mps/Test.php" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Mps/V1/Test.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/Mps/TranscodeTemplateSample.php" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Mps/V1/TranscodeTemplateSample.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/Mps/TranscodingTaskSample.php" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Mps/V1/TranscodingTaskSample.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/Mps/WartermarkTemplateSample.php" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Mps/V1/WartermarkTemplateSample.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Mps/V1/Model/CreateWatermarkTemplateReq.php" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Mps/V1/Model/CreateWatermarkTemplateReq.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Mps/V1/MpsClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Mps/V1/MpsClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,10 +59,20 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Examples/Mps/V2" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dangcingzzw\Desktop\202331\inspur\Examples\Mps\V2" />
+      <recent name="C:\Users\dangcingzzw\Desktop\202331\inspur\Services\Mps" />
+      <recent name="C:\Users\dangcingzzw\Desktop\202331\inspur\Services\Mps\V1\Model" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dangcingzzw\Desktop\202331\inspur\Examples\Mps\V1" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -56,11 +82,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677652878144</updated>
-      <workItem from="1677652880721" duration="9136000" />
+      <workItem from="1677652880721" duration="39738000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
