@@ -1,6 +1,6 @@
 <?php
 
-require '../../vendor/autoload.php';
+require '../../../vendor/autoload.php';
 
 use Inspur\SDK\Core\Auth\BasicCredentials;
 use Inspur\SDK\Core\Http\HttpConfig;
@@ -21,8 +21,8 @@ use \Inspur\SDK\Mps\V1\Enum\ResolutionEnum;
  *      height  水印高度，单位px；取值范围：8-4096，且只能为整数和偶数
  */
 
-$ak = "MGNhNTBiOTctZjg4NC00NTk4LThjYmItNTk4ZmQzMDVhZjNm";
-$sk = "M2M5OTNiMzMtMjk5ZS00MmFiLWE0NjYtYzQ0NTAzZWU3YzI3";
+$ak = "MTFlZDhkNzgtNGM5Yy00ODZlLWIyZDYtYmFiOTE0ZTkxMjU3";
+$sk = "YjFjNmUxMDQtMDhhMC00ZWEyLWJiMGEtNTlhZmRlYTkwNjA0";
 //$endpoint = "https://mps.cn-north-3.inspurcloudapi.com";
 $endpoint = "https://service.cloud.inspur.com";
 $projectId = "/cn-north-3";
@@ -41,7 +41,7 @@ $client = MpsClient::newBuilder()
 printf("---创建水印模板---");
 $request = new CreateWatermarkTemplateRequest();
 $body = new CreateWatermarkTemplateReq();
-$body->setName("zzw123a");
+$body->setName("zzw123abcde");
 $body->setPicUrl("C:\Users\dangcingzzw\Pictures\aaa.png");
 /**
  * webApi

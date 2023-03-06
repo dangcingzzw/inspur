@@ -1,6 +1,6 @@
 <?php
 
-require '../../vendor/autoload.php';
+require '../../../vendor/autoload.php';
 
 use Inspur\SDK\Core\Auth\BasicCredentials;
 use Inspur\SDK\Core\Http\HttpConfig;
@@ -23,15 +23,9 @@ use Inspur\SDK\Mps\V1\Enum\SamplingTypeEnum;
  * samplingType  采样方式：（秒/百分比）
  * samplingInterval  采样间隔（大于等于1且小于等于100，只能为整数）
  */
-
-$ak = "MGNhNTBiOTctZjg4NC00NTk4LThjYmItNTk4ZmQzMDVhZjNm";
-$sk = "M2M5OTNiMzMtMjk5ZS00MmFiLWE0NjYtYzQ0NTAzZWU3YzI3";
-//$endpoint = "https://mps.cn-north-3.inspurcloudapi.com";
+$ak = "MTFlZDhkNzgtNGM5Yy00ODZlLWIyZDYtYmFiOTE0ZTkxMjU3";
+$sk = "YjFjNmUxMDQtMDhhMC00ZWEyLWJiMGEtNTlhZmRlYTkwNjA0";
 $endpoint = "https://service.cloud.inspur.com";
-//$ak = "NzFkZTcyZWEtNjI4Yy00MWVkLTk2ODYtMzM5NzY3YjI3MTE4";
-//$sk = "MDY4YjNmOTAtNDI4YS00ZmU0LWJlZWEtM2RkN2VlNmE4NDFj";
-//$endpoint = "https://horizon.openstack.svc.cn-north-3.myinspurcloud.com";
-
 $projectId = "/mps/openapi";
 $credentials = new BasicCredentials($ak, $sk, $projectId);
 $config = HttpConfig::getDefaultConfig();
@@ -47,7 +41,7 @@ $client = MpsClient::newBuilder()
 printf("---创建截图模板---");
 $request = new CreateSnapshotTemplateRequest();
 $body = new CreateSnapshotTemplateReq();
-$body->setName("采样截图-百分比666--标清-test12912");
+$body->setName("采样截图-百分比666--标清-teww");
 $body->setType(SnapshotTypeEnum::TIMING);
 $body->setImageFormat(SnapshotFormatEnum::JPG);
 $body->setResolution(ResolutionEnum::CUSTOMER);

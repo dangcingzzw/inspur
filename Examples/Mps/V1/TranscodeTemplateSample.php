@@ -1,6 +1,6 @@
 <?php
 
-require '../../vendor/autoload.php';
+require '../../../vendor/autoload.php';
 
 use Inspur\SDK\Core\Auth\BasicCredentials;
 use Inspur\SDK\Core\Http\HttpConfig;
@@ -29,9 +29,8 @@ use Inspur\SDK\Mps\V1\Enum\ChannelsAudioEnum;
  *        shortSide 分辨率高度：取值范围：128-4096，且必须为整数和偶数；其中宽度和高度都为空，则分辨率和原视频保持一致。宽度为空，高度不为空，则按高度等比例缩放。宽度不为空，高度为空，则按宽度等比例缩放。均不为空，则根据宽度和高度缩放）
  */
 
-$ak = "MGNhNTBiOTctZjg4NC00NTk4LThjYmItNTk4ZmQzMDVhZjNm";
-$sk = "M2M5OTNiMzMtMjk5ZS00MmFiLWE0NjYtYzQ0NTAzZWU3YzI3";
-//$endpoint = "https://mps.cn-north-3.inspurcloudapi.com";
+$ak = "MTFlZDhkNzgtNGM5Yy00ODZlLWIyZDYtYmFiOTE0ZTkxMjU3";
+$sk = "YjFjNmUxMDQtMDhhMC00ZWEyLWJiMGEtNTlhZmRlYTkwNjA0";
 $endpoint = "https://service.cloud.inspur.com";
 $projectId = "/mps/openapi";
 $credentials = new BasicCredentials($ak, $sk, $projectId);

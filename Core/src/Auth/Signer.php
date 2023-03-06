@@ -20,6 +20,8 @@
 
 namespace Inspur\SDK\Core\Auth;
 
+use Inspur\SDK\Mps\V1\MpsClient;
+
 define('BasicDateFormat', "Ymd\THis\Z");
 define('Algorithm', 'SDK-HMAC-md5');
 define('HeaderXDate', 'X-Sdk-Date');
@@ -194,8 +196,10 @@ class Signer
 
         $stringToSign = $this->StringToSign($canonicalRequest, $t);
         $signature = $this->SignStringToSign($stringToSign, $this->Secret);
-        $authValue = $this->AuthHeaderValue($signature, $this->Key, $signedHeaders);
-        $r->headerParams[HeaderAuthorization] = $authValue;
+//        $authValue = $this->AuthHeaderValue($signature, $this->Key, $signedHeaders);
+//        $r->headerParams[HeaderAuthorization] = $authValue;
+//
+//        $r->headerParams[HeaderAuthorization] = $authValue;
         $uri = str_replace(['%2F'], ['/'], rawurlencode($r->resourcePath));
         $uri = str_replace(['%252F'], ['/'], $uri);
         $url = $r->scheme.'://'.$r->host.$uri.$queryString;

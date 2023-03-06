@@ -32,6 +32,7 @@ use Inspur\SDK\Core\Exceptions\SdkException;
 use Inspur\SDK\Core\Exceptions\ServerResponseException;
 use Inspur\SDK\Core\Exceptions\SslHandShakeException;
 use Inspur\SDK\Core\SdkRequest;
+use Inspur\SDK\Mps\V1\MpsClient;
 use Monolog\Logger;
 
 class HttpClient
@@ -83,13 +84,11 @@ class HttpClient
 
     public function doRequestSync(SdkRequest $sdkRequest)
     {
+
         unset($sdkRequest->headerParams['User-Agent']);
         unset($sdkRequest->headerParams['X-Project-Id']);
         unset($sdkRequest->headerParams['X-Sdk-Content-md5']);
         unset($sdkRequest->headerParams['X-Sdk-Date']);
-//        unset($sdkRequest->headerParams['Authorization']);
-        //TODO 获取token方法
-        $sdkRequest->headerParams['Authorization']='bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJUODdMZjF5azliU1JNWTAtLVRlWlJwekRQdnY5WTNPb2xpanZRaUZkcG9NIn0.eyJqdGkiOiJhOWYzNzFlNC0wZTVlLTQ4OWEtYmI1Ny0zOGRmMTA3YmMxOWYiLCJleHAiOjE2Nzc5MTE5NjMsIm5iZiI6MCwiaWF0IjoxNjc3OTA2NTYzLCJpc3MiOiJodHRwczovL2F1dGgxLmNsb3VkLmluc3B1ci5jb20vYXV0aC9yZWFsbXMvcGljcCIsImF1ZCI6WyJpbnNpZ2h0IiwiaW90LWh1YiIsImRiLXNlcnZpY2UiLCJjbGllbnQtZGFuZ2Npbmd6enciXSwic3ViIjoiMzdkMGVmYjAtMGU2ZS00OTM4LTliMTItMDZjNmNmYjRkMjY0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiY29uc29sZSIsIm5vbmNlIjoiNDU4ZTA1ODAtNDI3OC00YjA5LThkMTktZTUxY2NiZWYwYTBlIiwiYXV0aF90aW1lIjoxNjc3ODk3MzczLCJzZXNzaW9uX3N0YXRlIjoiMmNmOTc0ZDAtNzg2Yy00NmYwLWI2OTgtNTNlMDg0ODhlNzJhIiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJBQ0NPVU5UX0FETUlOIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7Imluc2lnaHQiOnsicm9sZXMiOlsiYWRtaW4iXX0sImlvdC1odWIiOnsicm9sZXMiOlsiYWRtaW4iXX0sImRiLXNlcnZpY2UiOnsicm9sZXMiOlsiYWRtaW4iXX0sImNsaWVudC1kYW5nY2luZ3p6dyI6eyJyb2xlcyI6WyJhZG1pbiJdfX0sInNjb3BlIjoib3BlbmlkIiwicGhvbmUiOiIxNzg2MjkwMjUxNSIsImdyb3VwcyI6WyIvZ3JvdXAtZGFuZ2Npbmd6enciXSwicHJvamVjdCI6ImRhbmdjaW5nenp3IiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZGFuZ2Npbmd6enciLCJlbWFpbCI6ImRhbmdjaW5nenp3QDE2My5jb20ifQ.g0VvdenBz_LcyQ16IscV3rcVGMRDvBhayxFhijQuQdDPe1Cwzro-d5h28_SOlhSILbXoJhaDovqPKTAYQX96_Zij6iF-q6yaoNVuVX4WQAYdt59R00QuyTrMGLTPD8x6riOW9upchRle3MHrKr6tE-5XClpYglDIeBHnbmy_euvJ5SLCp1d20__BkEJXo1DR96-o11abT1zfOx1fTxmGj-ajGA8HB7wu8iih8a-bxzrYaTvP1-lSVnqmxGe7qy7auvfHH-RkQ69M5sD6f9mMSzmG9dECqXy2rsEaaw3oWUuvH-lIa4iufBawGqYUkx4TVg4bRALb-7hbJR3pq08EUA'; // 上传的地址
 
         $request = new Request($sdkRequest->method,
             $sdkRequest->url,
@@ -103,6 +102,8 @@ class HttpClient
         }
 
         $httpOption = $this->createHttpClientOption($this->httpConfig);
+
+//        $response = $this->client->send($request, $httpOption);var_dump($response);die;
 
         try {
 
@@ -238,21 +239,23 @@ class HttpClient
                 $sdkError = new SdkErrorMessage($requestId,
                     $responseBodyArr['code'], $responseBodyArr['message']);
             } else {
-                foreach ($responseBodyArr as $key => $value) {
-                    if (!is_array($responseBodyArr[$key])) {
-                        return;
-                    }
-                    if (isset($responseBodyArr[$key]['code']) and
-                        isset($responseBodyArr[$key]['message'])) {
-                        $sdkError = new SdkErrorMessage($requestId,
-                            $responseBodyArr[$key]['code'],
-                            $responseBodyArr[$key]['message']);
-                    } else {
-                        $sdkError = new SdkErrorMessage($requestId,
-                            $responseBodyArr[$key]['error_code'],
-                            $responseBodyArr[$key]['error_msg']);
-                    }
-                }
+               if(!empty($responseBody)){
+                   foreach ($responseBodyArr as $key => $value) {
+                       if (!is_array($responseBodyArr[$key])) {
+                           return;
+                       }
+                       if (isset($responseBodyArr[$key]['code']) and
+                           isset($responseBodyArr[$key]['message'])) {
+                           $sdkError = new SdkErrorMessage($requestId,
+                               $responseBodyArr[$key]['code'],
+                               $responseBodyArr[$key]['message']);
+                       } else {
+                           $sdkError = new SdkErrorMessage($requestId,
+                               $responseBodyArr[$key]['error_code'],
+                               $responseBodyArr[$key]['error_msg']);
+                       }
+                   }
+               }
             }
         } catch (\Exception $e) {
             throw new ServerResponseException($responseStatusCode, new

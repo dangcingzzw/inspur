@@ -372,6 +372,7 @@ class Client
             $queryParams = $queryParams, $headerParams = $headerParams,
             $body = $body, $stream = false);
 
+
         $sdkRequest = $this->credentials->processAuthRequest($sdkRequest);
 
         if ($async_request) {
@@ -404,7 +405,6 @@ class Client
 
         $returnDataArr=json_decode((string) $responseBody,true);
         $returnData->setBody((string) $responseBody);
-
         if(isset($returnDataArr['code'])){
             var_dump($returnDataArr['message']);
             $returnData->setBody($returnDataArr['result']);

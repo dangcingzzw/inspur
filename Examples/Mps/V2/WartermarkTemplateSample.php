@@ -1,6 +1,6 @@
 <?php
 
-require '../../vendor/autoload.php';
+require '../../../vendor/autoload.php';
 
 use Inspur\SDK\Core\Auth\BasicCredentials;
 use Inspur\SDK\Core\Http\HttpConfig;

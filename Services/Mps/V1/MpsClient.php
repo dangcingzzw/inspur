@@ -9,7 +9,6 @@ use Inspur\SDK\Core\ClientBuilder;
 use Inspur\SDK\Core\Utils\ModelInterface;
 
 
-
 class MpsClient extends Client
 {
     protected $headerSelector;
@@ -434,7 +433,9 @@ class MpsClient extends Client
         $queryParams = [];
         $pathParams = [];
         $httpBody = null;
-        $headers = [];
+        $headers = [
+            'Authorization'=>'11111'
+        ];
         $multipart = false;
         $localVarParams = [];
         $arr = $request::attributeMap();
@@ -453,6 +454,7 @@ class MpsClient extends Client
             $httpBody->getPicUrl(),
             'https://service.cloud.inspur.com/regionsvc-cn-north-3/mps/file/upload'
         );
+
         $httpBody->setRegion('cn-north-3');
         $httpBody->setPicId($picInfo['id']);
         $httpBody->setPicUrl($picInfo['url']);
@@ -471,6 +473,62 @@ class MpsClient extends Client
             $requestType = '\Inspur\SDK\Mps\V1\Model\CreateWatermarkTemplateRequest'
         );
     }
+
+    public function getSignature()
+    {
+        $time = time() . rand(100, 999);
+        $nonce = (new MpsClient())->uuid();
+        $data = ['timestamp' => $time, 'nonce' => $nonce];
+        $ak=$this->getCredentials()->getAk();
+
+
+        $params = [
+            "uri" => "/cks/apps/v1/applications",
+            "method" => "POST",
+            "body" => md5(json_encode($data, JSON_UNESCAPED_SLASHES)),
+            "headers" => [
+                "random" => $nonce,
+                "secretId" =>$ak,
+                "time" => $time,
+                "sign" => $this->signRequest(
+                    'POST',
+                    '/cks/apps/v1/applications',
+                    [],
+                    $data,
+                    $time,
+                    $nonce),
+                "algorithm" => "md5"
+            ],
+            "queryParams" => null
+        ];
+
+        $res = $this->sign_curl('https://service.cloud.inspur.com/auth/v1/secrets/verify-signature',
+            $params
+        );
+        return $res;
+
+    }
+
+    function sign_curl($url, $data)
+
+    {
+        $data_string = json_encode($data);
+
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($data_string))
+        );
+        $result = curl_exec($ch);
+
+        return $result;
+
+    }
+
 
     /**
      * 获取水印模板
@@ -555,7 +613,7 @@ class MpsClient extends Client
 
     public function deleteWatermarkTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/mps/openapi/v1/watermark-templates';
+        $resourcePath = '/regionsvc-cn-north-3/mps/watermark/cn-north-3';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -809,6 +867,7 @@ class MpsClient extends Client
     )
     {
         if ($method == 'POST') {
+
             $x_time = $body->getTimestamp() ?? time() . rand(100, 999);
             $x_nonce = $body->getNonce() ?? $this->uuid();
         } elseif ($method == 'GET' || $method == 'DELETE') {
@@ -816,8 +875,21 @@ class MpsClient extends Client
             $x_nonce = $queryParams['nonce'] ?? $this->uuid();
         }
 
+//        $pathArr=[
+//            '/regionsvc-cn-north-3/mps/watermark',
+//            '/regionsvc-cn-north-3/mps/watermark/cn-north-3',
+//        ];
+
+//        $authorization='';
+//        if(in_array($resourcePath,$pathArr) || strpos($resourcePath,'/regionsvc-cn-north-3/mps/watermark/cn-north-3')===0){
+//            $token = $this->getSignature();
+//            $authorization = 'bearer '.json_decode($token, true)['access_token'];
+//        }
+        $token = $this->getSignature();
+        $authorization = 'bearer '.json_decode($token, true)['access_token'];
         $headerParams = [
             'x-sign-algorithm' => 'md5',
+            'Authorization'=>$authorization,
             'Content-Type' => 'application/json;charset=UTF-8',
             'x-time' => $x_time,
             'x-random' => $x_nonce,
@@ -830,7 +902,9 @@ class MpsClient extends Client
                 $x_time,
                 $x_nonce
             ),
+
         ];
+
         return $this->doHttpRequest(
             $method,
             $resourcePath,
@@ -871,7 +945,6 @@ class MpsClient extends Client
     //计算签名
     public function signRequest($method, $uri, $queryParams, $data, $x_time, $x_random)
     {
-        ;
         $str = $x_time . $x_random . $this->getCredentials()->getSk();
 
         $stringToSign = [];
@@ -901,8 +974,6 @@ class MpsClient extends Client
             $stringToSign[] = "\n";
             $stringToSign[] = md5(json_encode($data, JSON_UNESCAPED_SLASHES));
         }
-
-
         $sign = implode('', $stringToSign);
 
         return base64_encode(md5($sign));
@@ -920,24 +991,26 @@ class MpsClient extends Client
         $output .= implode("\n", $lines);
         return $output . "\n";
     }
+
     private function curlData($furl, $url)
     {
-        $header[] = 'Authorization:bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJUODdMZjF5azliU1JNWTAtLVRlWlJwekRQdnY5WTNPb2xpanZRaUZkcG9NIn0.eyJqdGkiOiJhOWYzNzFlNC0wZTVlLTQ4OWEtYmI1Ny0zOGRmMTA3YmMxOWYiLCJleHAiOjE2Nzc5MTE5NjMsIm5iZiI6MCwiaWF0IjoxNjc3OTA2NTYzLCJpc3MiOiJodHRwczovL2F1dGgxLmNsb3VkLmluc3B1ci5jb20vYXV0aC9yZWFsbXMvcGljcCIsImF1ZCI6WyJpbnNpZ2h0IiwiaW90LWh1YiIsImRiLXNlcnZpY2UiLCJjbGllbnQtZGFuZ2Npbmd6enciXSwic3ViIjoiMzdkMGVmYjAtMGU2ZS00OTM4LTliMTItMDZjNmNmYjRkMjY0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiY29uc29sZSIsIm5vbmNlIjoiNDU4ZTA1ODAtNDI3OC00YjA5LThkMTktZTUxY2NiZWYwYTBlIiwiYXV0aF90aW1lIjoxNjc3ODk3MzczLCJzZXNzaW9uX3N0YXRlIjoiMmNmOTc0ZDAtNzg2Yy00NmYwLWI2OTgtNTNlMDg0ODhlNzJhIiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJBQ0NPVU5UX0FETUlOIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7Imluc2lnaHQiOnsicm9sZXMiOlsiYWRtaW4iXX0sImlvdC1odWIiOnsicm9sZXMiOlsiYWRtaW4iXX0sImRiLXNlcnZpY2UiOnsicm9sZXMiOlsiYWRtaW4iXX0sImNsaWVudC1kYW5nY2luZ3p6dyI6eyJyb2xlcyI6WyJhZG1pbiJdfX0sInNjb3BlIjoib3BlbmlkIiwicGhvbmUiOiIxNzg2MjkwMjUxNSIsImdyb3VwcyI6WyIvZ3JvdXAtZGFuZ2Npbmd6enciXSwicHJvamVjdCI6ImRhbmdjaW5nenp3IiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZGFuZ2Npbmd6enciLCJlbWFpbCI6ImRhbmdjaW5nenp3QDE2My5jb20ifQ.g0VvdenBz_LcyQ16IscV3rcVGMRDvBhayxFhijQuQdDPe1Cwzro-d5h28_SOlhSILbXoJhaDovqPKTAYQX96_Zij6iF-q6yaoNVuVX4WQAYdt59R00QuyTrMGLTPD8x6riOW9upchRle3MHrKr6tE-5XClpYglDIeBHnbmy_euvJ5SLCp1d20__BkEJXo1DR96-o11abT1zfOx1fTxmGj-ajGA8HB7wu8iih8a-bxzrYaTvP1-lSVnqmxGe7qy7auvfHH-RkQ69M5sD6f9mMSzmG9dECqXy2rsEaaw3oWUuvH-lIa4iufBawGqYUkx4TVg4bRALb-7hbJR3pq08EUA'; // 上传的地址
+        $token = $this->getSignature();
 
+        $header[] = 'Authorization:bearer '.json_decode($token, true)['access_token'];
         $ch = curl_init();
-        curl_setopt($ch , CURLOPT_URL , $url);
-        curl_setopt($ch,CURLOPT_HTTPHEADER,$header);
-        curl_setopt($ch , CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch , CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
         // 注意这里的'file'是上传地址指定的key名
-        curl_setopt($ch , CURLOPT_POSTFIELDS, array('file' => new \CURLFile(realpath($furl))));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, array('file' => new \CURLFile(realpath($furl))));
         $output = curl_exec($ch);
         curl_close($ch);
-        $response= json_decode($output,true);
+        $response = json_decode($output, true);
 
-        if(isset($response['result']) && !empty($response['result'])){
+        if (isset($response['result']) && !empty($response['result'])) {
             return $response['result'];
-        }else{
+        } else {
             return (new SdkErrorMessage())->setErrorMsg('文件上传失败');
         }
     }

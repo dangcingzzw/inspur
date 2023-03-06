@@ -1,6 +1,6 @@
 <?php
 
-require '../../vendor/autoload.php';
+require '../../../vendor/autoload.php';
 
 use Inspur\SDK\Core\Auth\BasicCredentials;
 use Inspur\SDK\Core\Http\HttpConfig;
@@ -28,9 +28,8 @@ use Inspur\SDK\Mps\V1\Enum\ExecuteStatusEnum;
  *             snapshotMode 截图模式： beforeTranscoding:转码之前截图;afterTranscoding:转码之后截图； 如果截图模板ID为空，该字段为空； 如果截图模板ID不为空的情况下，默认为转码之后截图；
  */
 
-$ak = "MGNhNTBiOTctZjg4NC00NTk4LThjYmItNTk4ZmQzMDVhZjNm";
-$sk = "M2M5OTNiMzMtMjk5ZS00MmFiLWE0NjYtYzQ0NTAzZWU3YzI3";
-//$endpoint = "https://mps.cn-north-3.inspurcloudapi.com";
+$ak = "MTFlZDhkNzgtNGM5Yy00ODZlLWIyZDYtYmFiOTE0ZTkxMjU3";
+$sk = "YjFjNmUxMDQtMDhhMC00ZWEyLWJiMGEtNTlhZmRlYTkwNjA0";
 $endpoint = "https://service.cloud.inspur.com";
 $projectId = "/mps/openapi";
 $credentials = new BasicCredentials($ak, $sk, $projectId);
