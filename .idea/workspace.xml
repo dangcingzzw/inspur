@@ -3,17 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d2755974-8a0a-4652-886d-099933e4aac4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/src/Auth/Signer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/Auth/Signer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/src/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/src/Http/HttpClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/Http/HttpClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examples/Mps/V1/SnapshotTemplateSample.php" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Mps/V1/SnapshotTemplateSample.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examples/Mps/V1/TranscodeTemplateSample.php" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Mps/V1/TranscodeTemplateSample.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examples/Mps/V1/TranscodingTaskSample.php" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Mps/V1/TranscodingTaskSample.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examples/Mps/V1/WartermarkTemplateSample.php" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Mps/V1/WartermarkTemplateSample.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examples/Mps/V2/SnapshotTemplateSample.php" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Mps/V2/SnapshotTemplateSample.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examples/Mps/V2/TranscodeTemplateSample.php" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Mps/V2/TranscodeTemplateSample.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examples/Mps/V2/TranscodingTaskSample.php" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Mps/V2/TranscodingTaskSample.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examples/Mps/V2/WartermarkTemplateSample.php" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Mps/V2/WartermarkTemplateSample.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/Mps/V1/MpsClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Mps/V1/MpsClient.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1677652878144</updated>
       <workItem from="1677652880721" duration="40848000" />
-      <workItem from="1678069694361" duration="24455000" />
+      <workItem from="1678069694361" duration="24904000" />
     </task>
     <servers />
   </component>

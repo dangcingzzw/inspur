@@ -502,7 +502,7 @@ class MpsClient extends Client
             "queryParams" => null
         ];
 
-        $res = $this->sign_curl('https://service.cloud.inspur.com/auth/v1/secrets/verify-signature',
+        $res = $this->sign_curl($this->getEndpoint().'/auth/v1/secrets/verify-signature',
             $params
         );
         return $res;
