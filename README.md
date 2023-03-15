@@ -79,7 +79,7 @@ $body->setInput([
 ]);
 $body->setOutput([
     'bucket' => 'bucketName2',
-    'object' => 'outputFilePath',
+    'folder' => 'outputFilePath',
 ]);
 $body->setMediaProcessTaskInput([
     'transcodeTaskInput' => [
