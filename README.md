@@ -34,7 +34,7 @@
         object 需要转码处理的视频文件输入路径，如movie/2022/test.mp4
 ##### output 转码处理生成文件的输出信息。
         bucket 需要转码处理的视频文件所在的 OSS 桶 名，需要先在控制台进行云资源授权.例如：mps-22xx
-        object 需要转码处理的视频文件输入路径，如movie/2022/test.mp4
+        folder 需要转码处理的视频文件输入路径，如movie/2022/test.mp4
 ##### mediaProcessTaskInput  媒体处理任务类型参数
        transcodeTaskInput  转码任务所需模板参数
                 transcodeTemplateId  转码模板ID
