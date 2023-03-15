@@ -23,7 +23,6 @@ use \Inspur\SDK\Mps\V1\Enum\ResolutionEnum;
 
 $ak = "MTFlZDhkNzgtNGM5Yy00ODZlLWIyZDYtYmFiOTE0ZTkxMjU3";
 $sk = "YjFjNmUxMDQtMDhhMC00ZWEyLWJiMGEtNTlhZmRlYTkwNjA0";
-//$endpoint = "https://mps.cn-north-3.inspurcloudapi.com";
 $endpoint = "https://service.cloud.inspur.com";
 $projectId = "/cn-north-3";
 $credentials = new BasicCredentials($ak, $sk, $projectId);
@@ -41,19 +40,14 @@ $client = MpsClient::newBuilder()
 printf("---创建水印模板---");
 $request = new CreateWatermarkTemplateRequest();
 $body = new CreateWatermarkTemplateReq();
-$body->setName("zzw123abcde");
+$body->setName("20230308-1004");
 $body->setPicUrl("C:\Users\dangcingzzw\Pictures\aaa.png");
-/**
- * webApi
- */
 $body->setPosition([
     'width' => 100,
     'height' => 100,
     'top' => 80,
     'left' => 80
 ]);
-
-
 $body->setResolution(ResolutionEnum::SD);
 $request->setBody($body);
 

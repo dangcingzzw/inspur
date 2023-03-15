@@ -40,59 +40,51 @@ $client = MpsClient::newBuilder()
     ->withEndpoint($endpoint)
     ->withCredentials($credentials)
     ->build();
-printf("---转码任务列表---");
-$requestList = new ListTranscodingTaskRequest();
-$requestList->setPageNo(1);
-$requestList->setPageSize(2);
-$requestList->setExecuteStatus(ExecuteStatusEnum::COMPLETED);
-$requestList->setStartDate("2022-05-01T00:00:00Z");
-$requestList->setEndDate("2022-12-01T00:00:00Z");
-
-$responseDelete = $client->listTransCodingTask($requestList);
-var_dump($responseDelete->getBody());die;
 
 printf("---创建转码任务---");
 $request = new CreateTranscodingTaskRequest();
 $body = new CreateTranscodingTaskReq();
 $body->setInput([
-    'bucket' => 'mps-test12',
-    'object' => 'input/SampleVideo_1280x720_1mb.mp4',
+    'bucket' => 'zzwtestaa',
+    'object' => '/bbb/1678174641782.mp4',
 ]);
 $body->setOutput([
-    'bucket' => 'output  ',
-    'object' => '电视剧/2022/xxxtest.mp4'
+    'bucket' => 'output',
+    'folder' => 'aaa/bbbccc'
 ]);
 $body->setMediaProcessTaskInput([
     'transcodeTaskInput' => [
         'transcodeTemplateId' => '200928478868574208',
-        'watermarkTemplateId' => '667408536209129472',
+        'watermarkTemplateId' => '684297003367071744',
     ],
     'snapshotTaskInput' => [
-        'snapshotTemplateId' => '667413904104554496',
-        'snapshotConfig' => null,
+        'snapshotTemplateId' => '685182777239207936',
+        'snapshotConfig' => [
+            '00:00:01','00:00:02','00:00:05'
+        ],
         'snapshotMode' => 'afterTranscoding',
     ]
-]);
 
+]);
 $request->setBody($body);
 $response = $client->CreateTransCodingTask($request);
-$id=$response->getBody()['taskId'];
-
+$id = $response->getBody()['taskId'];
+var_dump($id);
 
 printf("---获取转码任务---");
 $requestGet = new GetTransCodingTaskRequest();
 $requestGet->setId($id);
 $responseGet = $client->GetTransCodingTask($requestGet);
 var_dump($responseGet->getBody());
+die;
 
 
 printf("---转码任务列表---");
 $requestList = new ListTranscodingTaskRequest();
 $requestList->setPageNo(1);
 $requestList->setPageSize(5);
-//$requestList->setExecuteStatus(ExecuteStatusEnum::QUEUING);
 $requestList->setStartDate('2022-02-10T01:42:47Z');
-$requestList->setEndDate('2022-02-17T01:59:24Z');
+$requestList->setEndDate('2023-02-17T01:59:24Z');
 
 $responseDelete = $client->listTransCodingTask($requestList);
 var_dump($responseDelete->getBody());

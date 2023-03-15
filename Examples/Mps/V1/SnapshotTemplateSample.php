@@ -41,7 +41,7 @@ $client = MpsClient::newBuilder()
 printf("---创建截图模板---");
 $request = new CreateSnapshotTemplateRequest();
 $body = new CreateSnapshotTemplateReq();
-$body->setName("采样截图-百分比666--标清-teww");
+$body->setName("截图模板20230309");
 $body->setType(SnapshotTypeEnum::TIMING);
 $body->setImageFormat(SnapshotFormatEnum::JPG);
 $body->setResolution(ResolutionEnum::CUSTOMER);
@@ -49,11 +49,12 @@ $body->setCustomerResolution([
     'longSide'=>200,
     'shortSide'=>200,
 ]);
-//$body->setSamplingType(SamplingTypeEnum::PERCENT);
-//$body->setSamplingInterval("22");
-
+$body->setSamplingType(SamplingTypeEnum::PERCENT);
+$body->setSamplingInterval("22");
 $request->setBody($body);
 $response = $client->CreateSnapshotTemplate($request);
+
+
 if($response->getBody()){
 
     var_dump($response->getBody());
@@ -69,7 +70,6 @@ if($response->getBody()){
     printf("---删除截图模板---");
     $requestDelete = new DeleteSnapshotTemplateRequest();
     $requestDelete->setId($id);
-
     $responseDelete = $client->deleteSnapshotTemplate($requestDelete);
     var_dump($responseDelete->getBody());
 }
