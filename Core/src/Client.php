@@ -384,9 +384,9 @@ class Client
                         return $returnData;
                     });
         } else {
+
             $response = $this->httpClient->doRequestSync($sdkRequest);
             $returnData = $this->SyncResponseHandler($response, $responseType);
-
             return $returnData;
         }
     }
@@ -399,12 +399,12 @@ class Client
 
         $responseHeader = $response->getHeaders();
         $returnData = ObjectSerializer::deserialize((string) $responseBody, $responseType);
-
         $returnData->setStatusCode($statusCode);
         $returnData->setHeaderParams($responseHeader);
 
         $returnDataArr=json_decode((string) $responseBody,true);
         $returnData->setBody((string) $responseBody);
+
         if(isset($returnDataArr['code'])){
             var_dump($returnDataArr['message']);
             $returnData->setBody($returnDataArr['result']);

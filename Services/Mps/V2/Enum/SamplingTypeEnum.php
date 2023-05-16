@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspur\SDK\Mps\v\Enum;
+namespace Inspur\SDK\Mps\v2\Enum;
 
 
 class SamplingTypeEnum

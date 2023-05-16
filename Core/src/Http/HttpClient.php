@@ -32,7 +32,6 @@ use Inspur\SDK\Core\Exceptions\SdkException;
 use Inspur\SDK\Core\Exceptions\ServerResponseException;
 use Inspur\SDK\Core\Exceptions\SslHandShakeException;
 use Inspur\SDK\Core\SdkRequest;
-use Inspur\SDK\Mps\V1\MpsClient;
 use Monolog\Logger;
 
 class HttpClient
@@ -84,29 +83,24 @@ class HttpClient
 
     public function doRequestSync(SdkRequest $sdkRequest)
     {
-
         unset($sdkRequest->headerParams['User-Agent']);
         unset($sdkRequest->headerParams['X-Project-Id']);
         unset($sdkRequest->headerParams['X-Sdk-Content-md5']);
         unset($sdkRequest->headerParams['X-Sdk-Date']);
-
-        $request = new Request($sdkRequest->method,
+            $request = new Request($sdkRequest->method,
             $sdkRequest->url,
             $sdkRequest->headerParams,
             $sdkRequest->body);
-
-
         if (isset($this->httpHandler)) {
-
             $this->httpHandler->processRequest(['request' => $sdkRequest, 'logger' => $this->logger]);
         }
 
         $httpOption = $this->createHttpClientOption($this->httpConfig);
-
-//        $response = $this->client->send($request, $httpOption);var_dump($response);die;
+//        var_dump( $sdkRequest->url);die;
+//        $response = $this->client->send($request, $httpOption);
+//        var_dump($response);die;
 
         try {
-
         $response = $this->client->send($request, $httpOption);
 
             if (isset($this->httpHandler)) {
@@ -136,10 +130,11 @@ class HttpClient
                         .' '.$response->getHeaders()['X-Request-Id'][0]);
                 }
 
-                if (400 <= $responseStatusCode and $responseStatusCode < 500) {
+                if (400 < $responseStatusCode and $responseStatusCode < 500) {
                     throw new ClientRequestException($responseStatusCode, $sdkError);
                 } else {
-                    throw new ServerResponseException($responseStatusCode, $sdkError);
+
+                  var_dump(json_decode($response->getBody(),true));die;
                 }
             } else {
                 $this->getExceptionType($e->getMessage());

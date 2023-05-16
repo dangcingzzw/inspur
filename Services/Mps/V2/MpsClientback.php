@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspur\SDK\Mps\V1;
+namespace Inspur\SDK\Mps\V2;
 
 use Inspur\SDK\Core\Exceptions\SdkErrorMessage;
 use Inspur\SDK\Core\Utils\HeaderSelector;
@@ -41,7 +41,7 @@ class MpsClient extends Client
 
     public function createTranscodingTaskWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId() . '/v1/transcoding-tasks';
+        $resourcePath = '/'.$this->getCredentials()->getProjectId().'/v1/transcoding-tasks';
         $formParams = [];
         $queryParams = [];
         $pathParams = [];
@@ -70,8 +70,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\CreateTranscodingTaskResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\CreateTranscodingTaskRequest'
+            $responseType = '\Inspur\SDK\Mps\v2\Model\CreateTranscodingTaskResponse',
+            $requestType = '\Inspur\SDK\Mps\v2\Model\CreateTranscodingTaskRequest'
         );
     }
 
@@ -90,7 +90,7 @@ class MpsClient extends Client
 
     public function getTranscodingTaskWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId() . '/v1/transcoding-task-info';
+        $resourcePath = '/'.$this->getCredentials()->getProjectId().'v1/transcoding-task-info';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -139,11 +139,10 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\getTranscodingTaskResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\getTranscodingTaskRequest'
+            $responseType = '\Inspur\SDK\Mps\v2\Model\getTranscodingTaskResponse',
+            $requestType = '\Inspur\SDK\Mps\v2\Model\getTranscodingTaskRequest'
         );
     }
-
     /**
      * 创建多转码任务
      *
@@ -159,7 +158,7 @@ class MpsClient extends Client
 
     public function createAdaptTranscodingTaskWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId() . '/v1/adapt-transcoding-tasks';
+        $resourcePath = '/'.$this->getCredentials()->getProjectId().'/v1/adapt-transcoding-tasks';
         $formParams = [];
         $queryParams = [];
         $pathParams = [];
@@ -188,11 +187,10 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\CreateTranscodingTaskResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\CreateTranscodingTaskRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\CreateTranscodingTaskResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\CreateTranscodingTaskRequest'
         );
     }
-
     /**
      * 转码任务列表
      *
@@ -208,7 +206,7 @@ class MpsClient extends Client
 
     public function listTranscodingTaskWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId() . '/v1/transcoding-task-list';
+        $resourcePath = '/'.$this->getCredentials()->getProjectId().'/v1/transcoding-task-list';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -272,11 +270,10 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\ListTranscodingTaskResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\ListTranscodingTaskRequest'
+            $responseType = '\Inspur\SDK\Mps\v2\Model\ListTranscodingTaskResponse',
+            $requestType = '\Inspur\SDK\Mps\v2\Model\ListTranscodingTaskRequest'
         );
     }
-
     public function listAdaptTranscodingTask($request)
     {
         return $this->listAdaptTranscodingTaskWithHttpInfo($request);
@@ -292,7 +289,7 @@ class MpsClient extends Client
      */
     public function listAdaptTranscodingTaskWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId() . '/v1/adapt-transcoding-task-list';
+        $resourcePath = '/'.$this->getCredentials()->getProjectId().'/v1/adapt-transcoding-task-list';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -356,11 +353,10 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\ListAdaptTranscodingTaskResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\ListAdaptTranscodingTaskRequest'
+            $responseType = '\Inspur\SDK\Mps\v2\Model\ListAdaptTranscodingTaskResponse',
+            $requestType = '\Inspur\SDK\Mps\v2\Model\ListAdaptTranscodingTaskRequest'
         );
     }
-
     /**
      * 获取多转码任务
      *
@@ -376,7 +372,7 @@ class MpsClient extends Client
 
     public function getAdaptTranscodingTaskWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId() . '/v1/adapt-transcoding-task-info';
+        $resourcePath = '/'.$this->getCredentials()->getProjectId().'/v1/adapt-transcoding-task-info';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -425,8 +421,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\getAdaptTranscodingTaskResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\getAdaptTranscodingTaskRequest'
+            $responseType = '\Inspur\SDK\Mps\v2\Model\getAdaptTranscodingTaskResponse',
+            $requestType = '\Inspur\SDK\Mps\v2\Model\getAdaptTranscodingTaskRequest'
         );
     }
 
@@ -445,7 +441,7 @@ class MpsClient extends Client
 
     public function createTranscodeTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId() . '/v1/transcode-templates';
+        $resourcePath = '/'.$this->getCredentials()->getProjectId().'/v1/transcode-templates';
         $formParams = [];
         $queryParams = [];
         $pathParams = [];
@@ -475,8 +471,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\CreateTranscodeTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\CreateTranscodeTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\v2\Model\CreateTranscodeTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\v2\Model\CreateTranscodeTemplateRequest'
         );
     }
 
@@ -495,7 +491,7 @@ class MpsClient extends Client
 
     public function getTranscodeTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId() . '/v1/transcode-templates';
+        $resourcePath ='/'.$this->getCredentials()->getProjectId().'/v1/transcode-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -543,11 +539,10 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\getTranscodeTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\getTranscodeTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\v2\Model\getTranscodeTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\v2\Model\getTranscodeTemplateRequest'
         );
     }
-
     /**
      * 获取转码模板列表
      *
@@ -563,7 +558,7 @@ class MpsClient extends Client
 
     public function listTranscodeTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId() . '/v1/transcode-templates';
+        $resourcePath = '/'.$this->getCredentials()->getProjectId().'/v1/transcode-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -637,11 +632,10 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\ListTranscodeTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\ListTranscodeTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\v2\Model\ListTranscodeTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\v2\Model\ListTranscodeTemplateRequest'
         );
     }
-
     /**
      * 删除转码模板
      *
@@ -657,7 +651,7 @@ class MpsClient extends Client
 
     public function deleteTranscodeTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId() . '/v1/transcode-templates';
+        $resourcePath = '/'.$this->getCredentials()->getProjectId().'/v1/transcode-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -705,19 +699,11 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\deleteTranscodeTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\deleteTranscodeTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\v2\Model\deleteTranscodeTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\v2\Model\deleteTranscodeTemplateRequest'
         );
     }
 
-    /**
-     * 创建水印模板
-     *
-     * Please refer to Inspur cloud API Explorer for details.
-     *
-     * @param $request 请求对象
-     * @return response
-     */
     public function createWatermarkTemplate($request)
     {
         return $this->createWatermarkTemplateWithHttpInfo($request);
@@ -725,46 +711,25 @@ class MpsClient extends Client
 
     public function createWatermarkTemplateWithHttpInfo($request)
     {
-
-        if ($this->getCredentials()->getSecurityToken()) {
-            $tmp=explode('/', $this->getCredentials()->getProjectId());
-            $resourcePath = '/'.$tmp[0] . '/mps/watermark';
-        } else {
-            $resourcePath = '/' . $this->getCredentials()->getProjectId() . '/v1/watermark-templates';
-        }
-
+        $resourcePath = '/'.$this->getCredentials()->getProjectId().'/v1/wartermark-templates';
         $formParams = [];
         $queryParams = [];
         $pathParams = [];
         $httpBody = null;
-        $headers = [
-            'Authorization' => ''
-        ];
+        $headers = [];
         $multipart = false;
         $localVarParams = [];
         $arr = $request::attributeMap();
 
         foreach ($arr as $k => $v) {
             $getter = $request::getters()[$k];
+
             $value = $request->$getter();
             $localVarParams[$k] = $value;
         }
 
         if ($localVarParams['body'] !== null) {
             $httpBody = $localVarParams['body'];
-        }
-
-        if ($this->getCredentials()->getSecurityToken()) {
-            $tmp=explode('/', $this->getCredentials()->getProjectId());
-            $url = $this->getEndpoint() . '/'.$tmp[0]   . '/mps/file/upload';
-            $picInfo = $this->curlData(
-                $httpBody->getPicUrl(),
-                $url
-            );
-
-            $httpBody->setPicId($picInfo['id']);
-            $httpBody->setPicUrl($picInfo['url']);
-            $httpBody->setPosition(json_encode($httpBody->getPosition()));
         }
 
         return $this->callApi(
@@ -776,62 +741,10 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\CreateWatermarkTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\CreateWatermarkTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\CreateWatermarkTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\CreateWatermarkTemplateRequest'
         );
     }
-
-    public function getSignature()
-    {
-        $time = time() . rand(100, 999);
-        $nonce = (new MpsClient())->uuid();
-        $data = ['timestamp' => $time, 'nonce' => $nonce];
-        $ak = $this->getCredentials()->getAk();
-        $securityToken = $this->getCredentials()->getSecurityToken();
-        $params = [
-            "uri" => "/cks/apps/v1/applications",
-            "method" => "POST",
-            "body" => md5(json_encode($data, JSON_UNESCAPED_SLASHES)),
-            "headers" => [
-                "random" => $nonce,
-                "secretId" => $ak,
-                "time" => $time,
-                "sign" => $this->signRequest(
-                    'POST',
-                    '/cks/apps/v1/applications',
-                    [],
-                    $data,
-                    $time,
-                    $nonce),
-                "algorithm" => "md5"
-            ],
-            "queryParams" => null
-        ];
-
-        $res = $this->sign_curl($securityToken,
-            $params
-        );
-        return $res;
-
-    }
-
-    function sign_curl($url, $data)
-    {
-        $data_string = json_encode($data);
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json',
-                'Content-Length: ' . strlen($data_string))
-        );
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); //忽略ssl检测
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-        $result = curl_exec($ch);
-        return $result;
-    }
-
 
     /**
      * 获取水印模板
@@ -848,7 +761,7 @@ class MpsClient extends Client
 
     public function getWatermarkTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId().'/v1/watermark-templates';
+        $resourcePath = '/'.$this->getCredentials()->getProjectId().'/v1/wartermark-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -896,8 +809,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\GetWatermarkTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\GetWatermarkTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\GetWatermarkTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\GetWatermarkTemplateRequest'
         );
     }
 
@@ -916,7 +829,7 @@ class MpsClient extends Client
 
     public function deleteWatermarkTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId().'/v1/watermark-templates';
+        $resourcePath ='/'.$this->getCredentials()->getProjectId().'/v1/wartermark-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -964,11 +877,10 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\deleteWatermarkTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\deleteWatermarkTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\deleteWatermarkTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\deleteWatermarkTemplateRequest'
         );
     }
-
 
     /**
      * 创建截图模板
@@ -985,7 +897,7 @@ class MpsClient extends Client
 
     public function createSnapshotTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId() . '/v1/snapshot-templates';
+        $resourcePath = '/'.$this->getCredentials()->getProjectId().'/v1/snapshot-templates';
         $formParams = [];
         $queryParams = [];
         $pathParams = [];
@@ -1013,8 +925,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\CreateSnapshotTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\CreateSnapshotTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\v2\Model\CreateSnapshotTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\v2\Model\CreateSnapshotTemplateRequest'
         );
     }
 
@@ -1033,8 +945,7 @@ class MpsClient extends Client
 
     public function getSnapshotTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId() . '/v1/snapshot-templates';
-
+        $resourcePath = '/'.$this->getCredentials()->getProjectId().'/v1/snapshot-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1082,8 +993,8 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\getSnapshotTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\getSnapshotTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\V2\Model\getSnapshotTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\V2\Model\getSnapshotTemplateRequest'
         );
     }
 
@@ -1102,7 +1013,7 @@ class MpsClient extends Client
 
     public function deleteSnapshotTemplateWithHttpInfo($request)
     {
-        $resourcePath = '/' . $this->getCredentials()->getProjectId() . '/v1/snapshot-templates';
+        $resourcePath = '/'.$this->getCredentials()->getProjectId().'/v1/snapshot-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1150,11 +1061,10 @@ class MpsClient extends Client
             $body = $httpBody,
             $multipart = $multipart,
             $postParams = $formParams,
-            $responseType = '\Inspur\SDK\Mps\V1\Model\deleteSnapshotTemplateResponse',
-            $requestType = '\Inspur\SDK\Mps\V1\Model\deleteSnapshotTemplateRequest'
+            $responseType = '\Inspur\SDK\Mps\v2\Model\deleteSnapshotTemplateResponse',
+            $requestType = '\Inspur\SDK\Mps\v2\Model\deleteSnapshotTemplateRequest'
         );
     }
-
 
     protected function callApi(
         $method,
@@ -1177,10 +1087,6 @@ class MpsClient extends Client
             $x_nonce = $queryParams['nonce'] ?? $this->uuid();
         }
 
-        $resourcePathArr=explode('/',$resourcePath);
-        unset($resourcePathArr[1]);
-        $resourcePathSign=implode('/',$resourcePathArr);
-
         $headerParams = [
             'x-sign-algorithm' => 'md5',
             'Content-Type' => 'application/json;charset=UTF-8',
@@ -1189,20 +1095,13 @@ class MpsClient extends Client
             'x-secret-id' => $this->getCredentials()->getAk(),
             'x-sign' => $this->signRequest(
                 $method,
-                $resourcePathSign,
+                $resourcePath,
                 $queryParams,
                 json_decode($body, true),
                 $x_time,
                 $x_nonce
             ),
         ];
-
-        if (preg_match('[/mps/watermark]', $resourcePath)) {
-            $token = $this->getSignature();
-
-            $authorization = 'bearer ' . json_decode($token, true)['access_token'];
-            $headerParams['authorization'] = $authorization;
-        }
         return $this->doHttpRequest(
             $method,
             $resourcePath,
@@ -1262,6 +1161,7 @@ class MpsClient extends Client
                 }
             }
             $uri = $uri . '?' . $tmp_query_params;
+            $uri = $uri . '?' . $tmp_query_params;
         }
 
         $stringToSign[] = $uri;
@@ -1292,23 +1192,20 @@ class MpsClient extends Client
 
     private function curlData($furl, $url)
     {
-        $header = [];
-        $token = $this->getSignature();
-        $header[] = 'Authorization:bearer ' . json_decode($token, true)['access_token'];
+        $header=[];
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); //忽略ssl检测
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
         curl_setopt($ch, CURLOPT_POST, 1);
         // 注意这里的'file'是上传地址指定的key名
         curl_setopt($ch, CURLOPT_POSTFIELDS, array('file' => new \CURLFile(realpath($furl))));
-        $response = curl_exec($ch);
-        $res = json_decode($response, true);
+        $output = curl_exec($ch);
         curl_close($ch);
-        if (isset($res['result']) && !empty($res['result'])) {
-            return $res['result'];
+        $response = json_decode($output, true);
+
+        if (isset($response['result']) && !empty($response['result'])) {
+            return $response['result'];
         } else {
             return (new SdkErrorMessage())->setErrorMsg('文件上传失败');
         }

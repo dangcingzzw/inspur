@@ -6,11 +6,9 @@ use \ArrayAccess;
 use Inspur\SDK\Core\Utils\ObjectSerializer;
 use Inspur\SDK\Core\Utils\ModelInterface;
 use Inspur\SDK\Core\SdkResponse;
-use Inspur\SDK\Mps\V1\MpsClient;
 
-class CreateTranscodingTaskResponse implements ModelInterface, ArrayAccess
+class CreateAdaptTranscodingTaskRequest implements ModelInterface, ArrayAccess
 {
-    use SdkResponse;
     const DISCRIMINATOR = null;
 
     /**
@@ -18,22 +16,24 @@ class CreateTranscodingTaskResponse implements ModelInterface, ArrayAccess
     *
     * @var string
     */
-    protected static $openAPIModelName = 'CreateTranscodingTaskResponse';
+    protected static $openAPIModelName = 'CreateAdaptTranscodingTaskRequest';
 
     /**
+    * body  body
     *
     * @var string[]
     */
     protected static $openAPITypes = [
-            'id' => 'string',
+            'body' => '\Inspur\SDK\Mps\V1\Model\CreateAdaptTranscodingTaskRequestReq'
     ];
 
     /**
+    * body  body
     *
     * @var string[]
     */
     protected static $openAPIFormats = [
-        'id' => null,
+        'body' => null
     ];
 
     /**
@@ -57,27 +57,30 @@ class CreateTranscodingTaskResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+    * body  body
     *
     * @var string[]
     */
     protected static $attributeMap = [
-            'id' => 'id',
+            'body' => 'body'
     ];
 
     /**
+    * body  body
     *
     * @var string[]
     */
     protected static $setters = [
-            'id' => 'setId',
+            'body' => 'setBody'
     ];
 
     /**
+    * body  body
     *
     * @var string[]
     */
     protected static $getters = [
-            'id' => 'getId',
+            'body' => 'getBody'
     ];
 
     /**
@@ -138,12 +141,7 @@ class CreateTranscodingTaskResponse implements ModelInterface, ArrayAccess
     */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['input'] = isset($data['input']) ? $data['input'] : null;
-        $this->container['output'] = isset($data['output']) ? $data['output'] : null;
-        $this->container['mediaProcessTaskInput'] = isset($data['mediaProcessTaskInput']) ? $data['mediaProcessTaskInput'] : null;
-        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : time().rand(100,999);
-        $this->container['nonce'] = isset($data['nonce']) ? $data['nonce'] : (new MpsClient())->uuid();
+        $this->container['body'] = isset($data['body']) ? $data['body'] : null;
     }
 
     /**
@@ -168,68 +166,30 @@ class CreateTranscodingTaskResponse implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+
     /**
-    * Gets id
-    *  水印配置模板id<br/>
+    * Gets body
+    *  body
     *
-    * @return string|null
+    * @return \Inspur\SDK\Mps\V1\Model\CreateWatermarkTemplateReq|null
     */
-    public function getId()
+    public function getBody()
     {
-        return $this->container['id'];
+        return $this->container['body'];
     }
 
     /**
-    * Sets id
+    * Sets body
     *
-    * @param string|null $id 水印配置模板id<br/>
+    * @param \Inspur\SDK\Mps\V1\Model\CreateWatermarkTemplateReq|null $body body
     *
     * @return $this
     */
-    public function setId($id)
+    public function setBody($body)
     {
-        $this->container['id'] = $id;
+        $this->container['body'] = $body;
         return $this;
-    }
-
-    public function getInput()
-    {
-        return $this->container['input'];
-    }
-    public function setInput($input)
-    {
-        $this->container['input'] = $input;
-        return $this;
-    }
-
-    public function getOutput()
-    {
-        return $this->container['output'];
-    }
-    public function setOutput($output)
-    {
-        $this->container['output']=$output;
-        return $this;
-    }
-
-    public function getMediaProcessTaskInput()
-    {
-        return $this->container['mediaProcessTaskInput'];
-    }
-    public function setMediaProcessTaskInput($mediaProcessTaskInput)
-    {
-        $this->container['mediaProcessTaskInput']=$mediaProcessTaskInput;
-        return $this;
-    }
-
-    public function getCreateTime()
-    {
-        return $this->container['createdTime'];
-    }
-
-    public function getUpdateTime()
-    {
-        return $this->container['updateTime'];
     }
 
     /**

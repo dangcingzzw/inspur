@@ -6,7 +6,7 @@ use \ArrayAccess;
 use Inspur\SDK\Core\Utils\ObjectSerializer;
 use Inspur\SDK\Core\Utils\ModelInterface;
 use Inspur\SDK\Core\SdkResponse;
-use Inspur\SDK\Mps\V2\MpsClient;
+use Inspur\SDK\Mps\V1\MpsClient;
 
 class GetSnapshotTemplateRequest implements ModelInterface, ArrayAccess
 {

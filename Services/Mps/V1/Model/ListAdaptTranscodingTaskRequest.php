@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspur\SDK\Mps\V2\Model;
+namespace Inspur\SDK\Mps\V1\Model;
 
 use \ArrayAccess;
 use Inspur\SDK\Core\Utils\ObjectSerializer;
 use Inspur\SDK\Core\Utils\ModelInterface;
 use Inspur\SDK\Core\SdkResponse;
-use Inspur\SDK\Mps\V2\MpsClient;
+use Inspur\SDK\Mps\V1\MpsClient;
 
-class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
+class ListAdaptTranscodingTaskRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -17,7 +17,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static $openAPIModelName = 'ListTranscodingTaskRequest';
+    protected static $openAPIModelName = 'ListAdaptTranscodingTaskRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -31,9 +31,9 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'executeStatus' => 'string',
         'startDate' => 'string',
         'endDate' => 'string',
+        'subTaskIdList' => 'string',
         'timestamp' => 'string',
         'nonce' => 'string',
-
     ];
 
     /**
@@ -48,6 +48,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'executeStatus' => '',
         'startDate' => '',
         'endDate' => '',
+        'subTaskIdList' => '',
         'timestamp' => '',
         'nonce' => '',
     ];
@@ -79,6 +80,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'executeStatus' => 'executeStatus',
         'startDate' => 'startDate',
         'endDate' => 'endDate',
+        'subTaskIdList' => 'subTaskIdList',
         'timestamp' => 'timestamp',
         'nonce' => 'nonce'
     ];
@@ -88,9 +90,9 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'pageNo' => 'setPageNo',
         'pageSize' => 'setPageSize',
         'executeStatus' => 'setExecuteStatus',
-        'subTaskIdList' => 'setSubTaskIdList',
         'startDate' => 'setStartDate',
         'endDate' => 'setEndDate',
+        'subTaskIdList' => 'setSubTaskIdList',
         'timestamp' => 'setTimestamp',
         'nonce' => 'setNonce'
     ];
@@ -99,9 +101,9 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'pageNo' => 'getPageNo',
         'pageSize' => 'getPageSize',
         'executeStatus' => 'getExecuteStatus',
-        'subTaskIdList' => 'getSubTaskIdList',
         'startDate' => 'getStartDate',
         'endDate' => 'getEndDate',
+        'subTaskIdList' => 'getSubTaskIdList',
         'timestamp' => 'getTimestamp',
         'nonce' => 'getNonce'
     ];
@@ -166,9 +168,9 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         $this->container['pageNo'] = isset($data['pageNo']) ? $data['pageNo'] : 1;
         $this->container['pageSize'] = isset($data['pageSize']) ? $data['pageSize'] : 10;
         $this->container['executeStatus'] = isset($data['executeStatus']) ? $data['executeStatus'] : null;
-        $this->container['subTaskIdList'] = isset($data['subTaskIdList']) ? $data['subTaskIdList'] : null;
         $this->container['startDate'] = isset($data['startDate']) ? $data['startDate'] : null;
         $this->container['endDate'] = isset($data['endDate']) ? $data['endDate'] : null;
+        $this->container['subTaskIdList'] = isset($data['subTaskIdList']) ? $data['subTaskIdList'] : null;
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : time().rand(100,999);;
         $this->container['nonce'] = isset($data['nonce']) ? $data['nonce'] : (new MpsClient())->uuid();
     }
@@ -256,6 +258,8 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         $this->container['subTaskIdList'] = $subTaskIdList;
         return $this;
     }
+
+
     public function getTimestamp()
     {
         return $this->container['timestamp'];

@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspur\SDK\Mps\V2\Enum;
+namespace Inspur\SDK\Mps\v2\Enum;
 
 class AcodecEnum{
     const MP3 = 'MP3';

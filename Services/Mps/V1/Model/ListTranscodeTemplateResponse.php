@@ -6,9 +6,8 @@ use \ArrayAccess;
 use Inspur\SDK\Core\Utils\ObjectSerializer;
 use Inspur\SDK\Core\Utils\ModelInterface;
 use Inspur\SDK\Core\SdkResponse;
-use Inspur\SDK\Mps\V1\MpsClient;
 
-class CreateTranscodingTaskResponse implements ModelInterface, ArrayAccess
+class ListTranscodeTemplateResponse implements ModelInterface, ArrayAccess
 {
     use SdkResponse;
     const DISCRIMINATOR = null;
@@ -18,22 +17,24 @@ class CreateTranscodingTaskResponse implements ModelInterface, ArrayAccess
     *
     * @var string
     */
-    protected static $openAPIModelName = 'CreateTranscodingTaskResponse';
+    protected static $openAPIModelName = 'ListTranscodeTemplateResponse';
 
     /**
+    * Array of property to type mappings. Used for (de)serialization
+    * 
     *
     * @var string[]
     */
     protected static $openAPITypes = [
-            'id' => 'string',
     ];
 
     /**
+    * Array of property to format mappings. Used for (de)serialization
+    * 
     *
     * @var string[]
     */
     protected static $openAPIFormats = [
-        'id' => null,
     ];
 
     /**
@@ -57,27 +58,31 @@ class CreateTranscodingTaskResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+    * Array of attributes where the key is the local name,
+    * and the value is the original name
+    * 
     *
     * @var string[]
     */
     protected static $attributeMap = [
-            'id' => 'id',
     ];
 
     /**
+    * Array of attributes to setter functions (for deserialization of responses)
+    * 
     *
     * @var string[]
     */
     protected static $setters = [
-            'id' => 'setId',
     ];
 
     /**
+    * Array of attributes to getter functions (for serialization of requests)
+    * 
     *
     * @var string[]
     */
     protected static $getters = [
-            'id' => 'getId',
     ];
 
     /**
@@ -138,12 +143,6 @@ class CreateTranscodingTaskResponse implements ModelInterface, ArrayAccess
     */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['input'] = isset($data['input']) ? $data['input'] : null;
-        $this->container['output'] = isset($data['output']) ? $data['output'] : null;
-        $this->container['mediaProcessTaskInput'] = isset($data['mediaProcessTaskInput']) ? $data['mediaProcessTaskInput'] : null;
-        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : time().rand(100,999);
-        $this->container['nonce'] = isset($data['nonce']) ? $data['nonce'] : (new MpsClient())->uuid();
     }
 
     /**
@@ -166,70 +165,6 @@ class CreateTranscodingTaskResponse implements ModelInterface, ArrayAccess
     public function valid()
     {
         return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-    * Gets id
-    *  水印配置模板id<br/>
-    *
-    * @return string|null
-    */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-    * Sets id
-    *
-    * @param string|null $id 水印配置模板id<br/>
-    *
-    * @return $this
-    */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-        return $this;
-    }
-
-    public function getInput()
-    {
-        return $this->container['input'];
-    }
-    public function setInput($input)
-    {
-        $this->container['input'] = $input;
-        return $this;
-    }
-
-    public function getOutput()
-    {
-        return $this->container['output'];
-    }
-    public function setOutput($output)
-    {
-        $this->container['output']=$output;
-        return $this;
-    }
-
-    public function getMediaProcessTaskInput()
-    {
-        return $this->container['mediaProcessTaskInput'];
-    }
-    public function setMediaProcessTaskInput($mediaProcessTaskInput)
-    {
-        $this->container['mediaProcessTaskInput']=$mediaProcessTaskInput;
-        return $this;
-    }
-
-    public function getCreateTime()
-    {
-        return $this->container['createdTime'];
-    }
-
-    public function getUpdateTime()
-    {
-        return $this->container['updateTime'];
     }
 
     /**

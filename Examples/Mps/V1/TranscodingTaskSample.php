@@ -9,7 +9,6 @@ use Inspur\SDK\Mps\V1\Model\CreateTranscodingTaskRequest;
 use Inspur\SDK\Mps\V1\Model\GetTranscodingTaskRequest;
 use Inspur\SDK\Mps\V1\Model\ListTranscodingTaskRequest;
 use Inspur\SDK\Mps\V1\MpsClient;
-use Inspur\SDK\Mps\V1\Enum\ExecuteStatusEnum;
 
 /**
  * input   需要转码处理的文件输入信息。
@@ -28,10 +27,12 @@ use Inspur\SDK\Mps\V1\Enum\ExecuteStatusEnum;
  *             snapshotMode 截图模式： beforeTranscoding:转码之前截图;afterTranscoding:转码之后截图； 如果截图模板ID为空，该字段为空； 如果截图模板ID不为空的情况下，默认为转码之后截图；
  */
 
-$ak = "MTFlZDhkNzgtNGM5Yy00ODZlLWIyZDYtYmFiOTE0ZTkxMjU3";
-$sk = "YjFjNmUxMDQtMDhhMC00ZWEyLWJiMGEtNTlhZmRlYTkwNjA0";
+
+$ak = "Zjc5NGFiNWMtZTIxYS00MjExLWIxNTEtZTNlOGRkODZhMmJl";
+$sk = "NWFjZDcwZGQtNTYwZC00YThmLTljOTYtNWVkOTA1MDNlMDQy";
 $endpoint = "https://service.cloud.inspur.com";
-$projectId = "/mps/openapi";
+$projectId = "regionsvc-cn-north-4/mps/openapi";
+
 $credentials = new BasicCredentials($ak, $sk, $projectId);
 $config = HttpConfig::getDefaultConfig();
 
@@ -54,17 +55,16 @@ $body->setOutput([
 ]);
 $body->setMediaProcessTaskInput([
     'transcodeTaskInput' => [
-        'transcodeTemplateId' => '200928478868574208',
-        'watermarkTemplateId' => '684297003367071744',
+        'transcodeTemplateId' => '710813383918551040',
+        'watermarkTemplateId' => '710803367807483904',
     ],
     'snapshotTaskInput' => [
-        'snapshotTemplateId' => '685182777239207936',
+        'snapshotTemplateId' => '710813029642600448',
         'snapshotConfig' => [
             '00:00:01','00:00:02','00:00:05'
         ],
         'snapshotMode' => 'afterTranscoding',
     ]
-
 ]);
 $request->setBody($body);
 $response = $client->CreateTransCodingTask($request);
@@ -76,7 +76,6 @@ $requestGet = new GetTransCodingTaskRequest();
 $requestGet->setId($id);
 $responseGet = $client->GetTransCodingTask($requestGet);
 var_dump($responseGet->getBody());
-die;
 
 
 printf("---转码任务列表---");
@@ -84,8 +83,10 @@ $requestList = new ListTranscodingTaskRequest();
 $requestList->setPageNo(1);
 $requestList->setPageSize(5);
 $requestList->setStartDate('2022-02-10T01:42:47Z');
-$requestList->setEndDate('2023-02-17T01:59:24Z');
+$requestList->setEndDate('2025-02-17T01:59:24Z');
+$requestList->setSubTaskIdList('702955365860442112,702955505543348224');
 
 $responseDelete = $client->listTransCodingTask($requestList);
 var_dump($responseDelete->getBody());
+die;
 

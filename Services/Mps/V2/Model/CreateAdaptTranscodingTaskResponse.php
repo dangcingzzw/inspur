@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspur\SDK\Mps\V1\Model;
+namespace Inspur\SDK\Mps\V2\Model;
 
 use \ArrayAccess;
 use Inspur\SDK\Core\Utils\ObjectSerializer;
 use Inspur\SDK\Core\Utils\ModelInterface;
 use Inspur\SDK\Core\SdkResponse;
-use Inspur\SDK\Mps\V1\MpsClient;
+use Inspur\SDK\Mps\v2\MpsClient;
 
-class CreateTranscodingTaskResponse implements ModelInterface, ArrayAccess
+class CreateAdaptTranscodingTaskResponse implements ModelInterface, ArrayAccess
 {
     use SdkResponse;
     const DISCRIMINATOR = null;
@@ -18,7 +18,7 @@ class CreateTranscodingTaskResponse implements ModelInterface, ArrayAccess
     *
     * @var string
     */
-    protected static $openAPIModelName = 'CreateTranscodingTaskResponse';
+    protected static $openAPIModelName = 'CreateAdaptTranscodingTaskResponse';
 
     /**
     *

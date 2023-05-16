@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspur\SDK\Mps\V2\Model;
+namespace Inspur\SDK\Mps\V1\Model;
 
 use \ArrayAccess;
 use Inspur\SDK\Core\Utils\ObjectSerializer;
 use Inspur\SDK\Core\Utils\ModelInterface;
 use Inspur\SDK\Core\SdkResponse;
-use Inspur\SDK\Mps\V2\MpsClient;
+use Inspur\SDK\Mps\V1\MpsClient;
 
-class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
+class ListTranscodeTemplateRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -17,11 +17,10 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static $openAPIModelName = 'ListTranscodingTaskRequest';
+    protected static $openAPIModelName = 'ListTranscodeTemplateRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
-     * id  转码任务配置id
      *
      * @var string[]
      */
@@ -31,14 +30,18 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'executeStatus' => 'string',
         'startDate' => 'string',
         'endDate' => 'string',
+        'subTaskIdList' => 'string',
+        'id' => 'string',
+        'name' => 'string',
+        'containerGroup' => 'string',
+        'containerType' => 'string',
+        'type' => 'string',
         'timestamp' => 'string',
         'nonce' => 'string',
-
     ];
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     * id  转码任务配置id
      *
      * @var string[]
      */
@@ -48,6 +51,12 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'executeStatus' => '',
         'startDate' => '',
         'endDate' => '',
+        'id' => '',
+        'subTaskIdList' => '',
+        'name' => '',
+        'containerGroup' => '',
+        'containerType' => '',
+        'type' => '',
         'timestamp' => '',
         'nonce' => '',
     ];
@@ -79,6 +88,12 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'executeStatus' => 'executeStatus',
         'startDate' => 'startDate',
         'endDate' => 'endDate',
+        'id' => 'id',
+        'subTaskIdList' => 'subTaskIdList',
+        'name' => 'name',
+        'containerGroup' => 'containerGroup',
+        'containerType' => 'containerType',
+        'type' => 'type',
         'timestamp' => 'timestamp',
         'nonce' => 'nonce'
     ];
@@ -88,9 +103,14 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'pageNo' => 'setPageNo',
         'pageSize' => 'setPageSize',
         'executeStatus' => 'setExecuteStatus',
-        'subTaskIdList' => 'setSubTaskIdList',
         'startDate' => 'setStartDate',
         'endDate' => 'setEndDate',
+        'id' => 'setId',
+        'subTaskIdList' => 'setSubTaskIdList',
+        'name' => 'setName',
+        'containerGroup' => 'setContainerGroup',
+        'containerType' => 'setContainerType',
+        'type' => 'setType',
         'timestamp' => 'setTimestamp',
         'nonce' => 'setNonce'
     ];
@@ -99,9 +119,14 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'pageNo' => 'getPageNo',
         'pageSize' => 'getPageSize',
         'executeStatus' => 'getExecuteStatus',
-        'subTaskIdList' => 'getSubTaskIdList',
         'startDate' => 'getStartDate',
         'endDate' => 'getEndDate',
+        'id' => 'getId',
+        'subTaskIdList' => 'getSubTaskIdList',
+        'name' => 'getName',
+        'containerGroup' => 'getContainerGroup',
+        'containerType' => 'getContainerType',
+        'type' => 'getType',
         'timestamp' => 'getTimestamp',
         'nonce' => 'getNonce'
     ];
@@ -166,9 +191,14 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         $this->container['pageNo'] = isset($data['pageNo']) ? $data['pageNo'] : 1;
         $this->container['pageSize'] = isset($data['pageSize']) ? $data['pageSize'] : 10;
         $this->container['executeStatus'] = isset($data['executeStatus']) ? $data['executeStatus'] : null;
-        $this->container['subTaskIdList'] = isset($data['subTaskIdList']) ? $data['subTaskIdList'] : null;
         $this->container['startDate'] = isset($data['startDate']) ? $data['startDate'] : null;
         $this->container['endDate'] = isset($data['endDate']) ? $data['endDate'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['subTaskIdList'] = isset($data['subTaskIdList']) ? $data['subTaskIdList'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['containerGroup'] = isset($data['containerGroup']) ? $data['containerGroup'] : null;
+        $this->container['containerType'] = isset($data['containerType']) ? $data['containerType'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : time().rand(100,999);;
         $this->container['nonce'] = isset($data['nonce']) ? $data['nonce'] : (new MpsClient())->uuid();
     }
@@ -246,6 +276,18 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         $this->container['endDate'] = $endDate;
         return $this;
     }
+
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+        return $this;
+    }
+
     public function getSubTaskIdList()
     {
         return $this->container['subTaskIdList'];
@@ -256,6 +298,47 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         $this->container['subTaskIdList'] = $subTaskIdList;
         return $this;
     }
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+        return $this;
+    }
+    public function getContainerGroup()
+    {
+        return $this->container['name'];
+    }
+
+    public function setContainerGroup($containerGroup)
+    {
+        $this->container['containerGroup'] = $containerGroup;
+        return $this;
+    }
+    public function getContainerType()
+    {
+        return $this->container['containerType'];
+    }
+
+    public function setContainerType($containerType)
+    {
+        $this->container['containerType'] = $containerType;
+        return $this;
+    }
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+        return $this;
+    }
+
     public function getTimestamp()
     {
         return $this->container['timestamp'];

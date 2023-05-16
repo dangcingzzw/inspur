@@ -73,7 +73,6 @@ class LogmaticHandler extends SocketHandler
             $connectionTimeout,
             $chunkSize
         );
-
         $this->logToken = $token;
         $this->hostname = $hostname;
         $this->appname  = $appname;

@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspur\SDK\Mps\V2\Model;
+namespace Inspur\SDK\Mps\V1\Model;
 
 use \ArrayAccess;
 use Inspur\SDK\Core\Utils\ObjectSerializer;
 use Inspur\SDK\Core\Utils\ModelInterface;
 use Inspur\SDK\Core\SdkResponse;
-use Inspur\SDK\Mps\V2\MpsClient;
+use Inspur\SDK\Mps\V1\MpsClient;
 
-class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
+class GetAdaptTranscodingTaskRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -17,37 +17,27 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static $openAPIModelName = 'ListTranscodingTaskRequest';
+    protected static $openAPIModelName = 'GetAdaptTranscodingTaskRequest';
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
      * id  转码任务配置id
      *
      * @var string[]
      */
     protected static $openAPITypes = [
-        'pageNo' => 'int',
-        'pageSize' => 'int',
-        'executeStatus' => 'string',
-        'startDate' => 'string',
-        'endDate' => 'string',
+        'id' => 'string',
         'timestamp' => 'string',
         'nonce' => 'string',
 
     ];
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
      * id  转码任务配置id
      *
      * @var string[]
      */
     protected static $openAPIFormats = [
-        'pageNo' => 1,
-        'pageSize' => 10,
-        'executeStatus' => '',
-        'startDate' => '',
-        'endDate' => '',
+        'id' => null,
         'timestamp' => '',
         'nonce' => '',
     ];
@@ -72,36 +62,35 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         return self::$openAPIFormats;
     }
 
-
+    /**
+     * id  转码任务配置id
+     *
+     * @var string[]
+     */
     protected static $attributeMap = [
-        'pageNo' => 'pageNo',
-        'pageSize' => 'pageSize',
-        'executeStatus' => 'executeStatus',
-        'startDate' => 'startDate',
-        'endDate' => 'endDate',
+        'id' => 'id',
         'timestamp' => 'timestamp',
         'nonce' => 'nonce'
     ];
 
-
+    /**
+     * id  转码任务配置id
+     *
+     * @var string[]
+     */
     protected static $setters = [
-        'pageNo' => 'setPageNo',
-        'pageSize' => 'setPageSize',
-        'executeStatus' => 'setExecuteStatus',
-        'subTaskIdList' => 'setSubTaskIdList',
-        'startDate' => 'setStartDate',
-        'endDate' => 'setEndDate',
+        'id' => 'setId',
         'timestamp' => 'setTimestamp',
         'nonce' => 'setNonce'
     ];
 
+    /**
+     * id  转码任务配置id
+     *
+     * @var string[]
+     */
     protected static $getters = [
-        'pageNo' => 'getPageNo',
-        'pageSize' => 'getPageSize',
-        'executeStatus' => 'getExecuteStatus',
-        'subTaskIdList' => 'getSubTaskIdList',
-        'startDate' => 'getStartDate',
-        'endDate' => 'getEndDate',
+        'id' => 'getId',
         'timestamp' => 'getTimestamp',
         'nonce' => 'getNonce'
     ];
@@ -163,14 +152,10 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['pageNo'] = isset($data['pageNo']) ? $data['pageNo'] : 1;
-        $this->container['pageSize'] = isset($data['pageSize']) ? $data['pageSize'] : 10;
-        $this->container['executeStatus'] = isset($data['executeStatus']) ? $data['executeStatus'] : null;
-        $this->container['subTaskIdList'] = isset($data['subTaskIdList']) ? $data['subTaskIdList'] : null;
-        $this->container['startDate'] = isset($data['startDate']) ? $data['startDate'] : null;
-        $this->container['endDate'] = isset($data['endDate']) ? $data['endDate'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : time().rand(100,999);;
         $this->container['nonce'] = isset($data['nonce']) ? $data['nonce'] : (new MpsClient())->uuid();
+
     }
 
     /**
@@ -196,64 +181,27 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     }
 
 
-    public function getPageNo()
+    /**
+     * Gets id
+     *  任务配置id
+     *
+     * @return string
+     */
+    public function getId()
     {
-        return $this->container['pageNo'];
+        return $this->container['id'];
     }
 
-    public function setPageNo($pageNo)
+    /**
+     * Sets id
+     *
+     * @param string $id 任务配置id
+     *
+     * @return $this
+     */
+    public function setId($id)
     {
-        $this->container['pageNo'] = $pageNo;
-        return $this;
-    }
-    public function getPageSize()
-    {
-        return $this->container['pageSize'];
-    }
-
-    public function setPageSize($pageSize)
-    {
-        $this->container['pageSize'] = $pageSize;
-        return $this;
-    }
-    public function getExecuteStatus()
-    {
-        return $this->container['executeStatus'];
-    }
-
-    public function setExecuteStatus($executeStatus)
-    {
-        $this->container['executeStatus'] = $executeStatus;
-        return $this;
-    }
-    public function getStartDate()
-    {
-        return $this->container['startDate'];
-    }
-
-    public function setStartDate($startDate)
-    {
-        $this->container['startDate'] = $startDate;
-        return $this;
-    }
-    public function getEndDate()
-    {
-        return $this->container['endDate'];
-    }
-
-    public function setEndDate($endDate)
-    {
-        $this->container['endDate'] = $endDate;
-        return $this;
-    }
-    public function getSubTaskIdList()
-    {
-        return $this->container['subTaskIdList'];
-    }
-
-    public function setSubTaskIdList($subTaskIdList)
-    {
-        $this->container['subTaskIdList'] = $subTaskIdList;
+        $this->container['id'] = $id;
         return $this;
     }
     public function getTimestamp()

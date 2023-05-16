@@ -31,6 +31,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'executeStatus' => 'string',
         'startDate' => 'string',
         'endDate' => 'string',
+        'subTaskIdList' => 'string',
         'timestamp' => 'string',
         'nonce' => 'string',
 
@@ -48,6 +49,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'executeStatus' => '',
         'startDate' => '',
         'endDate' => '',
+        'subTaskIdList' => '',
         'timestamp' => '',
         'nonce' => '',
     ];
@@ -79,6 +81,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'executeStatus' => 'executeStatus',
         'startDate' => 'startDate',
         'endDate' => 'endDate',
+        'subTaskIdList' => 'subTaskIdList',
         'timestamp' => 'timestamp',
         'nonce' => 'nonce'
     ];
@@ -90,6 +93,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'executeStatus' => 'setExecuteStatus',
         'startDate' => 'setStartDate',
         'endDate' => 'setEndDate',
+        'subTaskIdList' => 'setSubTaskIdList',
         'timestamp' => 'setTimestamp',
         'nonce' => 'setNonce'
     ];
@@ -100,6 +104,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         'executeStatus' => 'getExecuteStatus',
         'startDate' => 'getStartDate',
         'endDate' => 'getEndDate',
+        'subTaskIdList' => 'getSubTaskIdList',
         'timestamp' => 'getTimestamp',
         'nonce' => 'getNonce'
     ];
@@ -166,6 +171,7 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
         $this->container['executeStatus'] = isset($data['executeStatus']) ? $data['executeStatus'] : null;
         $this->container['startDate'] = isset($data['startDate']) ? $data['startDate'] : null;
         $this->container['endDate'] = isset($data['endDate']) ? $data['endDate'] : null;
+        $this->container['subTaskIdList'] = isset($data['subTaskIdList']) ? $data['subTaskIdList'] : null;
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : time().rand(100,999);;
         $this->container['nonce'] = isset($data['nonce']) ? $data['nonce'] : (new MpsClient())->uuid();
     }
@@ -241,6 +247,16 @@ class ListTranscodingTaskRequest implements ModelInterface, ArrayAccess
     public function setEndDate($endDate)
     {
         $this->container['endDate'] = $endDate;
+        return $this;
+    }
+    public function getSubTaskIdList()
+    {
+        return $this->container['subTaskIdList'];
+    }
+
+    public function setSubTaskIdList($subTaskIdList)
+    {
+        $this->container['subTaskIdList'] = $subTaskIdList;
         return $this;
     }
     public function getTimestamp()

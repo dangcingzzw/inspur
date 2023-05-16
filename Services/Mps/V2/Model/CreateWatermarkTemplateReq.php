@@ -30,6 +30,7 @@ class CreateWatermarkTemplateReq implements ModelInterface
         'region' => 'string',
         'picId' => 'string',
         'position' => 'array',
+        'watermarkPosition' => 'array',
         "resolution"=>'string',
         'timestamp' => 'string',
         'nonce' => 'string',
@@ -42,6 +43,7 @@ class CreateWatermarkTemplateReq implements ModelInterface
         'region' => '',
         'picId' => '',
         'position' => [],
+        'watermarkPosition' => [],
         "resolution"=>'',
         'timestamp' => '',
         'nonce' => '',
@@ -74,6 +76,7 @@ class CreateWatermarkTemplateReq implements ModelInterface
         'region' => 'region',
         'picId' => 'picId',
         'position' => 'position',
+        'watermarkPosition' => 'watermarkPosition',
         "resolution"=>'resolution',
         'timestamp' => 'timestamp',
         'nonce' => 'nonce',
@@ -85,6 +88,7 @@ class CreateWatermarkTemplateReq implements ModelInterface
         'region' => 'setRegion',
         'picUrl' => 'setPicUrl',
         'position' => 'setPosition',
+        'watermarkPosition' => 'setWatermarkPosition',
         'resolution' => 'setResolution',
         'timestamp' => 'setTimestamp',
         'nonce' => 'setNonce',
@@ -96,6 +100,7 @@ class CreateWatermarkTemplateReq implements ModelInterface
         'region' => 'getRegion',
         'picId' => 'getPicId',
         'position' => 'getPosition',
+        'watermarkPosition' => 'getWatermarkPosition',
         'resolution' => 'getResolution',
         'timestamp' => 'getTimestamp',
         'nonce' => 'getNonce',
@@ -163,6 +168,7 @@ class CreateWatermarkTemplateReq implements ModelInterface
         $this->container['picUrl'] = isset($data['picUrl']) ? $data['picUrl'] : null;
         $this->container['picId'] = isset($data['picId']) ? $data['picId'] : null;
         $this->container['position'] = isset($data['position']) ? $data['position'] : null;
+        $this->container['watermarkPosition'] = isset($data['watermarkPosition']) ? $data['watermarkPosition'] : null;
         $this->container['resolution'] = isset($data['resolution']) ? $data['resolution'] : null;
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : time().rand(100,999);;
         $this->container['nonce'] = isset($data['nonce']) ? $data['nonce'] : (new MpsClient())->uuid();
@@ -241,14 +247,23 @@ class CreateWatermarkTemplateReq implements ModelInterface
     {
         return $this->container['position'];
     }
-    public function setPicUrl($picUrl)
+    public function setPosition($position)
+    {
+        $this->container['position'] = $position;
+        $this->container['watermarkPosition'] = $position;
+    }
+        public function setPicUrl($picUrl)
     {
         $this->container['picUrl']=$picUrl;
         return $this;
     }
-    public function setPosition($watermarkPosition)
+    public function getWatermarkPosition()
     {
-        $this->container['position']=$watermarkPosition;
+        return $this->container['watermarkPosition'];
+    }
+    public function setWatermarkPosition($watermarkPosition)
+    {
+        $this->container['watermarkPosition']=$watermarkPosition;
         return $this;
     }
 

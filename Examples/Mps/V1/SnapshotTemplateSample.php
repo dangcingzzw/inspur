@@ -23,10 +23,13 @@ use Inspur\SDK\Mps\V1\Enum\SamplingTypeEnum;
  * samplingType  采样方式：（秒/百分比）
  * samplingInterval  采样间隔（大于等于1且小于等于100，只能为整数）
  */
-$ak = "MTFlZDhkNzgtNGM5Yy00ODZlLWIyZDYtYmFiOTE0ZTkxMjU3";
-$sk = "YjFjNmUxMDQtMDhhMC00ZWEyLWJiMGEtNTlhZmRlYTkwNjA0";
+
+
+$ak = "Zjc5NGFiNWMtZTIxYS00MjExLWIxNTEtZTNlOGRkODZhMmJl";
+$sk = "NWFjZDcwZGQtNTYwZC00YThmLTljOTYtNWVkOTA1MDNlMDQy";
 $endpoint = "https://service.cloud.inspur.com";
-$projectId = "/mps/openapi";
+$projectId = "regionsvc-cn-north-4/mps/openapi";
+
 $credentials = new BasicCredentials($ak, $sk, $projectId);
 $config = HttpConfig::getDefaultConfig();
 
@@ -41,7 +44,7 @@ $client = MpsClient::newBuilder()
 printf("---创建截图模板---");
 $request = new CreateSnapshotTemplateRequest();
 $body = new CreateSnapshotTemplateReq();
-$body->setName("截图模板20230309");
+$body->setName("截图模板79999");
 $body->setType(SnapshotTypeEnum::TIMING);
 $body->setImageFormat(SnapshotFormatEnum::JPG);
 $body->setResolution(ResolutionEnum::CUSTOMER);
