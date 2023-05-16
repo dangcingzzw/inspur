@@ -28,18 +28,11 @@ use Inspur\SDK\Mps\V2\MpsClient;
  */
 
 
-//正式环境
-//$ak = "MGNhNTBiOTctZjg4NC00NTk4LThjYmItNTk4ZmQzMDVhZjNm";
-//$sk = "M2M5OTNiMzMtMjk5ZS00MmFiLWE0NjYtYzQ0NTAzZWU3YzI3";
-//$endpoint = "https://service.cloud.inspur.com";
-//$projectId = "mps/openapi";
-///**
-// * 开发环境
-// */
-$ak = "NDdhOTY2YWMtYjA4NS00MWRlLWI3NDAtMjQwYTIzYWJmYmVm";
-$sk = "MWY4OWY3ZTctNzZmMS00MmRjLWE5ZTUtMTllNzQ3MjIxZWZj";
-$endpoint = "https://service-dev.inspurcloud.cn";
-$projectId = "mps/openapi";
+$ak = "Zjc5NGFiNWMtZTIxYS00MjExLWIxNTEtZTNlOGRkODZhMmJl";
+$sk = "NWFjZDcwZGQtNTYwZC00YThmLTljOTYtNWVkOTA1MDNlMDQy";
+$endpoint = "https://service.cloud.inspur.com";
+$projectId = "regionsvc-cn-north-4/mps/openapi";
+
 $credentials = new BasicCredentials($ak, $sk, $projectId);
 $config = HttpConfig::getDefaultConfig();
 
@@ -62,11 +55,11 @@ $body->setOutput([
 ]);
 $body->setMediaProcessTaskInput([
     'transcodeTaskInput' => [
-        'transcodeTemplateId' => '696299475245793280',
-        'watermarkTemplateId' => '701071497372958720',
+        'transcodeTemplateId' => '710813383918551040',
+        'watermarkTemplateId' => '710803367807483904',
     ],
     'snapshotTaskInput' => [
-        'snapshotTemplateId' => '701183443489325056',
+        'snapshotTemplateId' => '710813029642600448',
         'snapshotConfig' => [
             '00:00:01','00:00:02','00:00:05'
         ],
@@ -85,15 +78,14 @@ $responseGet = $client->GetTransCodingTask($requestGet);
 var_dump($responseGet->getBody());
 
 
-
 printf("---转码任务列表---");
 $requestList = new ListTranscodingTaskRequest();
-//$requestList->setPageNo(1);
-//$requestList->setPageSize(5);
-//$requestList->setStartDate('2022-02-10T01:42:47Z');
-//$requestList->setEndDate('2023-02-17T01:59:24Z');
-$requestList->setSubTaskIdList('701186141525704704');
+$requestList->setPageNo(1);
+$requestList->setPageSize(5);
+$requestList->setStartDate('2022-02-10T01:42:47Z');
+$requestList->setEndDate('2025-02-17T01:59:24Z');
+$requestList->setSubTaskIdList('702955365860442112,702955505543348224');
 
 $responseDelete = $client->listTransCodingTask($requestList);
 var_dump($responseDelete->getBody());
-
+die;

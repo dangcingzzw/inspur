@@ -1152,30 +1152,25 @@ class MpsClient extends Client
             $x_nonce = $queryParams['nonce'] ?? $this->uuid();
         }
 
-
-        $authorization='';
+        $resourcePathArr=explode('/',$resourcePath);
+        unset($resourcePathArr[1]);
+        $resourcePathSign=implode('/',$resourcePathArr);
         $headerParams = [
             'x-sign-algorithm' => 'md5',
-//            'Authorization'=>$authorization,
             'Content-Type' => 'application/json;charset=UTF-8',
             'x-time' => $x_time,
             'x-random' => $x_nonce,
             'x-secret-id' => $this->getCredentials()->getAk(),
             'x-sign' => $this->signRequest(
                 $method,
-                $resourcePath,
+                $resourcePathSign,
                 $queryParams,
                 json_decode($body, true),
                 $x_time,
                 $x_nonce
             ),
         ];
-//        if($resourcePath=='/regionsvc-cn-north-3/mps/watermark'){
-//            $token = $this->getSignature();
-//            $authorization = 'bearer ' . json_decode($token, true)['access_token'];
-//            $headerParams['authorization']=$authorization;
-//        }
-        //if判断方法名 调用token并放入请求头
+
 
         return $this->doHttpRequest(
             $method,

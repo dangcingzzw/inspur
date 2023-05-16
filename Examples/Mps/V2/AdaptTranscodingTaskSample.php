@@ -28,18 +28,10 @@ use Inspur\SDK\Mps\V2\Enum\ContainerTypeEnum;
  *       waterMarkTemplateId 水印模板id
  */
 
-//正式环境
-//$ak = "MGNhNTBiOTctZjg4NC00NTk4LThjYmItNTk4ZmQzMDVhZjNm";
-//$sk = "M2M5OTNiMzMtMjk5ZS00MmFiLWE0NjYtYzQ0NTAzZWU3YzI3";
-//$endpoint = "https://service.cloud.inspur.com";
-//$projectId = "/mps/openapi";
-///**
-// * 开发环境
-// */
-$ak = "NDdhOTY2YWMtYjA4NS00MWRlLWI3NDAtMjQwYTIzYWJmYmVm";
-$sk = "MWY4OWY3ZTctNzZmMS00MmRjLWE5ZTUtMTllNzQ3MjIxZWZj";
-$endpoint = "https://service-dev.inspurcloud.cn";
-$projectId = "mps/openapi";
+$ak = "Zjc5NGFiNWMtZTIxYS00MjExLWIxNTEtZTNlOGRkODZhMmJl";
+$sk = "NWFjZDcwZGQtNTYwZC00YThmLTljOTYtNWVkOTA1MDNlMDQy";
+$endpoint = "https://service.cloud.inspur.com";
+$projectId = "regionsvc-cn-north-4/mps/openapi";
 $credentials = new BasicCredentials($ak, $sk, $projectId);
 $config = HttpConfig::getDefaultConfig();
 
@@ -67,7 +59,7 @@ $body->setTask([
     "multiBitrateVideo" => "1800,1200,858",
     "multiBitrateAudio" => "256,128,64",
     "hlstime" => 20,
-    "watermarkTemplateId" => "688315854396260352"
+    "watermarkTemplateId" => "710598979415375872"
 ]);
 $request->setBody($body);
 $response = $client->CreateAdaptTransCodingTask($request);
